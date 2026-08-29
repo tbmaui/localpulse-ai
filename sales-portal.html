@@ -47,13 +47,13 @@
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .framework-pills, .niche-pills, .pattern-pills {
+    .framework-pills, .niche-pills {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
       margin-bottom: 16px;
     }
-    .framework-btn, .niche-btn, .pattern-btn {
+    .framework-btn, .niche-btn {
       padding: 7px 13px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-color);
@@ -67,8 +67,7 @@
       transition: var(--transition-smooth);
     }
     .framework-btn.active, .framework-btn:hover,
-    .niche-btn.active, .niche-btn:hover,
-    .pattern-btn.active, .pattern-btn:hover {
+    .niche-btn.active, .niche-btn:hover {
       background: rgba(99, 102, 241, 0.22);
       border-color: var(--primary);
       color: #ffffff;
@@ -312,13 +311,13 @@
             <button class="obj-btn" data-obj="price">"TOO EXPENSIVE ($299)"</button>
             <button class="obj-btn" data-obj="email">"JUST SEND AN EMAIL"</button>
             <button class="obj-btn" data-obj="wom">"ALL WORD OF MOUTH"</button>
-            <button class="obj-btn" data-obj="trust">"DON'T TRUST AI"</button>
+            <button class="obj-btn" data-obj="included">"IS AI INCLUDED IN $299?"</button>
           </div>
 
           <div class="obj-display-box" id="obj-display">
-            <div class="obj-reframe" id="obj-reframe">⚡ REFRAME: PASSIVE BROCHURE VS. 24/7 REVENUE ENGINE</div>
+            <div class="obj-reframe" id="obj-reframe">⚡ REFRAME: MODERN DIGITAL ASSET VS. STATIC 2018 SITE</div>
             <p class="script-text" id="obj-script" style="font-size: 0.88rem;">
-              "Having a website is like having a sign on your door; having an AI website with a live video host and 24/7 voice phone agent is like having your best salesperson working the front desk around the clock. When someone visits your site at 9 PM on Sunday, does your site answer questions and book them in?"
+              "Totally get it! But does your current site rank on local Google search, look modern on smartphones, and offer optional 24/7 AI phone answering? That’s why owners switch—for $299/mo, we upgrade your entire digital footprint into a modern revenue engine."
             </p>
             <button class="copy-btn" style="position:absolute; bottom:12px; right:12px;" onclick="copyText('obj-script')">COPY SCRIPT</button>
           </div>
@@ -342,7 +341,7 @@
           <div class="script-step-box" id="battle-display" style="min-height: 120px; background: rgba(0,0,0,0.3); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
             <span class="step-tag" id="bat-tag">VS. $5,000 TRADITIONAL AGENCIES:</span>
             <p class="script-text" id="bat-text" style="font-size: 0.86rem;">
-              "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, lock you into 12-month contracts, and bill $150/hr for simple edits. We launch in 48 hours for $299/mo flat with a talking video avatar and 24/7 voice receptionist included."
+              "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, and bill $150/hr for simple edits. We launch a modern 3D site with built-in SEO in 48 hours for $299/mo flat with optional AI Sales Engine add-ons whenever you want."
             </p>
           </div>
         </div>
@@ -357,14 +356,14 @@
           </div>
 
           <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.8;">
-            <div>🔹 <strong>Core AI Website:</strong> $598 Month 1 ($299 setup + $299 M1) → $299/mo recurring</div>
-            <div>🔹 <strong>Interactive AI Live Video Avatar:</strong> +$89/mo</div>
-            <div>🔹 <strong>24/7 AI Voice Phone Receptionist:</strong> +$99/mo</div>
-            <div>🔹 <strong>Unlimited Outbound Lead Machine:</strong> +$149/mo (Premium)</div>
-            <div>🔹 <strong>Automated AI SEO & Content Machine:</strong> +$89/mo</div>
-            <div>🔹 <strong>24/7 Web Chat Concierge:</strong> +$69/mo</div>
-            <div>🔹 <strong>5-Star Review Booster:</strong> +$49/mo</div>
-            <div>🔹 <strong>Missed-Call Instant AI Textback:</strong> +$59/mo</div>
+            <div>🔹 <strong>Core Modern Website + SEO:</strong> $598 Month 1 ($299 setup + $299 M1) → $299/mo recurring</div>
+            <div>🔹 <strong>24/7 AI Voice Phone Receptionist:</strong> +$99/mo (Optional Add-on)</div>
+            <div>🔹 <strong>Unlimited Outbound Lead Machine:</strong> +$149/mo (Optional Premium Add-on)</div>
+            <div>🔹 <strong>Automated AI SEO & Content Machine:</strong> +$89/mo (Optional Add-on)</div>
+            <div>🔹 <strong>Interactive AI Live Video Avatar:</strong> +$89/mo (Optional Enterprise Add-on)</div>
+            <div>🔹 <strong>24/7 Web Chat Concierge:</strong> +$69/mo (Optional Add-on)</div>
+            <div>🔹 <strong>5-Star Review Booster:</strong> +$49/mo (Optional Add-on)</div>
+            <div>🔹 <strong>Missed-Call Instant AI Textback:</strong> +$59/mo (Optional Add-on)</div>
           </div>
         </div>
 
@@ -390,20 +389,20 @@
         title: "AIDA FRAMEWORK: COMPLETE ONE-PERSON TALK TRACK",
         sections: [
           {
-            tag: "1. ATTENTION (THE AFTER-HOURS SPEED TEST)",
-            text: '"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. Real quick—I ran a 30-second speed test on your website and shop phone yesterday at 7:15 PM to see what happens when a customer needs an emergency quote after hours. Your phone went to voicemail, so I tested your competitor down the street, and they had instant online booking. Can I get just 25 seconds to show you what we found?"'
+            tag: "1. ATTENTION (LOCAL COMPETITOR CONTRAST)",
+            text: '"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. Real quick—I was looking at your shop\'s Google presence in <strong>[City]</strong> yesterday, and while your reviews are great, your website is missing modern mobile conversion and local search ranking pages that your top competitors are using. Do you have 25 seconds to hear why I called your shop specifically?"'
           },
           {
-            tag: "2. INTEREST (THE LEAKY BUCKET DATA)",
-            text: '"Here’s the reality: over <strong>40% of local customers</strong> search and call after 6 PM or on weekends when you\'re closed or busy on the floor. When they hit voicemail, <strong>90% hang up and call the next listing</strong>. Most local shops are leaking <strong>10 to 15 high-paying jobs every single month</strong> simply because nobody can answer the phone 24/7."'
+            tag: "2. INTEREST (THE MOBILE BOUNCE PROBLEM)",
+            text: '"Here’s what’s happening: over <strong>70% of local customers</strong> now search on their phones, and when a site is slow, outdated, or doesn\'t have instant booking, they bounce in under 5 seconds and call another shop. Most local business owners know their website needs an overhaul, but they don\'t want to waste <strong>$5,000 on a slow agency</strong> or spend <strong>40 hours fighting Wix templates</strong>."'
           },
           {
-            tag: "3. DESIRE (THE AI SUPER-SKILL SOLUTION)",
-            text: '"That’s exactly what we fix. We build local businesses a turnkey AI website with a <strong>live talking video avatar</strong> that greets visitors face-to-face, plus a <strong>24/7 AI voice phone agent</strong> that answers your shop phone, quotes prices, and books appointments directly into your calendar. We build the entire system in <strong>under 48 hours</strong> for a flat <strong>$299 a month</strong> with zero long-term contracts and a 30-day money-back guarantee."'
+            tag: "3. DESIRE (THE MODERN SITE + MODULAR AI SALES ENGINE)",
+            text: '"We give local shops a complete, modern, high-performance website with <strong>built-in local SEO and lead capture</strong> for a flat <strong>$299 a month</strong>—live in under 48 hours with zero work from your team. And what makes it unique is our <strong>modular AI Sales Engine</strong>: you can plug in optional power-ons like a <strong>24/7 AI Voice Phone Receptionist</strong>, an <strong>outbound lead generator</strong>, or <strong>automated SEO content</strong> whenever you want to drive extra revenue."'
           },
           {
             tag: "4. ACTION (THE 3-MINUTE PREVIEW CLOSE)",
-            text: '"Look <strong>[Owner Name]</strong>, I don\'t expect you to buy this over the phone right now. All I want to do is generate a <strong>100% custom live preview</strong> with your logo, your prices, and your talking AI video avatar so you can see it on your own phone. Does tomorrow morning at <strong>10:15 AM</strong> or <strong>2:30 PM</strong> work better for a quick 3-minute look?"'
+            text: '"I\'ve already put together a <strong>100% custom live preview</strong> with your shop\'s branding and service menu so you can see how clean it looks on your phone. Does tomorrow morning at <strong>10:15 AM</strong> or <strong>2:30 PM</strong> work for a quick 3-minute look?"'
           }
         ]
       },
@@ -411,20 +410,20 @@
         title: "THE 6 W's FRAMEWORK: DIRECT, CONCISE & LOGICAL",
         sections: [
           {
-            tag: "1. WHO & WHAT (THE IDENTITY & OFFER)",
-            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> here with LocalPulse AI. We specialize in building <strong>high-converting AI websites with live interactive video avatars and 24/7 voice phone receptionists</strong> specifically engineered for local service businesses."'
+            tag: "1. WHO & WHAT (IDENTITY & CORE OFFER)",
+            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> here with LocalPulse AI. We deliver <strong>turnkey, ultra-modern websites with built-in local SEO</strong> engineered specifically for local service businesses."'
           },
           {
-            tag: "2. WHERE & WHEN (MARKET & 48-HOUR SPEED)",
-            text: '"We work right here in the <strong>[City / Metro Area]</strong> market with shops like yours, and we deliver completely customized, fully functioning websites live in <strong>under 48 hours</strong> with 100% done-for-you setup."'
+            tag: "2. WHERE & WHEN (48-HOUR SETUP)",
+            text: '"We work directly with shops right here in <strong>[City / Metro Area]</strong>, and we deliver your completely customized, high-converting website live in <strong>under 48 hours</strong> with 100% done-for-you setup."'
           },
           {
-            tag: "3. WHY IT MATTERS (THE ACUTE CUSTOMER NEED)",
-            text: '"The reason I\'m reaching out to you today is that local customers searching for services want instant answers. When your shop is slammed or closed for the night, our AI assistant steps in to <strong>answer questions, quote prices, and book appointments 24/7</strong> so you never lose another paying customer to your competitors down the road."'
+            tag: "3. WHY IT MATTERS & THE SALES ENGINE",
+            text: '"The reason I\'m reaching out is that traditional sites are just static brochures. We give you a modern web presence for <strong>$299 a month</strong>, and allow you to layer in an optional <strong>AI Sales Engine</strong>—like a 24/7 phone answering agent or continuous outbound lead lists—so your website actively captures paying jobs around the clock."'
           },
           {
-            tag: "4. WHAT'S NEXT / CLOSE (60-SECOND MOBILE DEMO)",
-            text: '"It costs just <strong>$299 a month</strong> with no contracts. All I\'d like to do next is text you a <strong>private 60-second video demo</strong> showing your shop\'s actual name and talking AI avatar in action. What is the best cell number to text that over to?"'
+            tag: "4. WHAT'S NEXT / CLOSE (PREVIEW LINK)",
+            text: '"No contracts, month-to-month. All I\'d like to do next is text you a <strong>private preview link</strong> so you can see how your shop looks on mobile. What is the best cell number to send that over to?"'
           }
         ]
       },
@@ -432,20 +431,20 @@
         title: "PAS FRAMEWORK: PROBLEM ➔ AGITATE ➔ RELIEF",
         sections: [
           {
-            tag: "1. PROBLEM (THE CONSTANT PHONE INTERRUPTION)",
-            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse. Quick question for you: how many times a day are you or your techs right in the middle of a job with customers, and the phone rings off the hook with people asking basic price questions you don\'t have time to answer?"'
+            tag: "1. PROBLEM (OUTDATED MOBILE PRESENCE)",
+            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse. Quick question: when was the last time you looked at your shop’s website on a smartphone alongside your top three local competitors?"'
           },
           {
-            tag: "2. AGITATE (THE SILENT REVENUE BLEED)",
-            text: '"It\'s frustrating because every minute you spend wiping your hands to answer a $30 question is a minute not making money. And even worse—when you can\'t pick up and it goes to voicemail, that customer doesn\'t leave a message. They immediately click the next shop on Google Maps. That’s easily <strong>$300 to $500 in lost revenue on a single missed call</strong>, adding up to <strong>thousands of dollars in lost profit every single month</strong> while your shop overhead stays exactly the same."'
+            tag: "2. AGITATE (LOST LEADS & $5K AGENCY TRAP)",
+            text: '"Most local owners haven\'t touched their site in years because agencies charge <strong>$5,000 upfront</strong> and take 2 months to do anything. But in the meantime, outdated design, slow load speeds, and missing local SEO pages are quietly costing you <strong>dozens of high-value customer calls every month</strong> because modern mobile users simply tap the shop that looks the most professional."'
           },
           {
-            tag: "3. RELIEF & SOLUTION (THE AUTOMATED SHIELD)",
-            text: '"We take that entire headache off your plate forever. We install an <strong>AI Growth Engine</strong> for your shop: a custom website with a <strong>live interactive video avatar</strong> that answers questions online, plus an <strong>ultra-natural 24/7 AI voice phone agent</strong> that answers your calls, quotes your exact prices, and books repair bays on autopilot. You never touch code, you never miss a call, and it\'s just <strong>$299 a month</strong> with zero long-term commitments."'
+            tag: "3. RELIEF & SOLUTION (MODERN SITE + AI POWER-UPS)",
+            text: '"We eliminate that entire headache. We build you an <strong>ultra-modern, lightning-fast website with built-in local SEO and high-converting lead forms</strong> for just <strong>$299 a month</strong>, live in 48 hours with zero effort from you. Plus, you can upgrade it into a full <strong>AI Sales Engine</strong> with modular add-ons like a <strong>24/7 AI phone receptionist</strong> or <strong>automated local content machine</strong> whenever you\'re ready."'
           },
           {
-            tag: "4. CLOSE (3-MINUTE COMPUTER / PHONE WALKTHROUGH)",
-            text: '"I\'ve already started assembling a custom preview for <strong>[Business Name]</strong>. Are you by a computer or your phone tomorrow around <strong>10:30 AM</strong> so I can show you how it works in under 3 minutes?"'
+            tag: "4. CLOSE (3-MINUTE PHONE LOOK)",
+            text: '"I have your new shop preview ready to review. Do you have 3 minutes tomorrow around <strong>10:30 AM</strong> or <strong>2:00 PM</strong> to check it out on your phone?"'
           }
         ]
       },
@@ -454,23 +453,23 @@
         sections: [
           {
             tag: "1. DIRECT OPENER",
-            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse AI. I’ll keep this super direct—we build automated AI growth systems for local businesses, and I wanted to share three quick capabilities that are generating dozens of new bookings for shops in our area."'
+            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse AI. I’ll keep this super direct—we build high-performance websites and modular AI sales engines for local businesses, and I wanted to share three quick advantages our clients are seeing."'
           },
           {
-            tag: "2. FEATURE 1: 24/7 AI PHONE AGENT",
-            text: '"First, our <strong>24/7 Inbound AI Voice Receptionist</strong> picks up calls in under 2 seconds and answers with natural human conversation. The <strong>advantage</strong> is that it knows your exact service list, prices, and operating hours, which <strong>benefits you</strong> because you never lose after-hours callers or have to stop what you\'re doing in the shop just to answer price-shoppers."'
+            tag: "2. FEATURE 1: MODERN 3D SITE + BUILT-IN SEO",
+            text: '"First, our <strong>Core Turnkey Website</strong> gives your shop an ultra-modern, high-speed web presence with <strong>built-in local SEO and schema markup</strong>. The <strong>advantage</strong> is that you instantly look superior to every local competitor on Google, which <strong>benefits you</strong> by converting more visitors into phone calls and scheduled visits without paying $5k upfront."'
           },
           {
-            tag: "3. FEATURE 2: LIVE VIDEO AVATAR",
-            text: '"Second, our <strong>Interactive Live Video Avatar</strong> greets every website visitor face-to-face on their phone. The <strong>advantage</strong> is that it explains your current promotions and guides visitors directly into your booking calendar, which <strong>benefits you</strong> by delivering a <strong>300% higher conversion rate</strong> than ordinary static brochure websites."'
+            tag: "3. FEATURE 2: OPTIONAL 24/7 AI PHONE RECEPTIONIST",
+            text: '"Second, you can optionally plug in our <strong>24/7 AI Voice Phone Receptionist</strong>. The <strong>advantage</strong> is that it answers inbound calls in natural voice 24/7 using your exact price sheet, which <strong>benefits you</strong> because you never miss high-value after-hours callers when the shop is closed."'
           },
           {
-            tag: "4. FEATURE 3: OUTBOUND LEAD MACHINE",
-            text: '"Third, our <strong>Unlimited Outbound Lead Machine</strong> pulls verified local corporate contacts and fleet accounts by radius. The <strong>advantage</strong> is continuous outbound pipeline, which <strong>benefits you</strong> by bringing in steady, high-margin commercial contracts without paying for expensive ads."'
+            tag: "4. FEATURE 3: OPTIONAL LEAD & CONTENT MACHINE",
+            text: '"Third, you can add our <strong>Unlimited Local Lead Machine and Automated SEO Publisher</strong>. The <strong>advantage</strong> is continuous local B2B lead scraping and weekly Google updates, which <strong>benefits you</strong> with a steady flow of high-margin corporate and commercial accounts."'
           },
           {
             tag: "5. OFFER & CLOSE",
-            text: '"Everything is packaged into a turnkey website that launches in <strong>48 hours for $299 a month</strong>, backed by a <strong>30-day money-back guarantee</strong>. Can I get 3 minutes on your calendar tomorrow at <strong>11:00 AM</strong> or <strong>2:00 PM</strong> to show you the live preview?"'
+            text: '"The core website is just <strong>$299 a month</strong>, month-to-month, live in <strong>48 hours</strong>. Can I get 3 minutes on your calendar tomorrow at <strong>11:00 AM</strong> or <strong>2:00 PM</strong> to show you the live preview?"'
           }
         ]
       },
@@ -478,20 +477,20 @@
         title: "PASTOR FRAMEWORK: PROBLEM ➔ STORY ➔ TRANSFORMATION ➔ OFFER",
         sections: [
           {
-            tag: "1. PROBLEM & AMPLIFY ($30K-$50K YEARLY LOSS)",
-            text: '"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. I know you\'re busy running the shop today, but I\'m calling because most local business owners we speak with are dealing with the same silent profit killer: they work 12-hour days, but because their website is a static brochure and nobody is answering the phone at night, they are quietly <strong>losing $30,000 to $50,000 a year in customer revenue</strong> to big chains and aggressive local competitors."'
+            tag: "1. PROBLEM & AMPLIFY (THE $5,000 AGENCY DILEMMA)",
+            text: '"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. I know you\'re busy running the shop today, but I\'m calling because most local business owners we speak with are stuck between two bad options: keep an outdated, embarrassing website that loses customers, or spend $5,000 on a web agency that takes 8 weeks and doesn\'t drive new business."'
           },
           {
-            tag: "2. STORY & SOLUTION (REAL NEIGHBORHOOD SHOP CASE)",
-            text: '"Just last month, we partnered with a local auto shop that was struggling with this exact issue—their bays were full during the day, but their missed-call log was stacked with lost tire and brake jobs. We deployed our <strong>turnkey AI website with an interactive video avatar and 24/7 voice receptionist in under 48 hours</strong>."'
+            tag: "2. STORY & SOLUTION (48-HOUR UPGRADE)",
+            text: '"Just last month, we worked with a local service shop in a neighboring town that had an old 2018 website that generated zero leads. In <strong>under 48 hours</strong>, we replaced it with a modern, high-speed website with built-in local SEO for <strong>$299 a month</strong>, and they added our <strong>24/7 AI voice phone agent</strong> as a modular add-on."'
           },
           {
-            tag: "3. TRANSFORMATION & OFFER (24 EXTRA JOBS & $6,800 PROFIT)",
-            text: '"In their first 30 days, their AI phone assistant <strong>captured 24 after-hours appointments</strong> that would have normally bounced, generating over <strong>$6,800 in new gross profit</strong>. We provide this entire system—custom website, live video avatar, 24/7 phone receptionist, and automated SEO content—for a flat <strong>$299 a month</strong>, month-to-month, backed by our <strong>30-day \'More Leads Or It\'s Free\' guarantee</strong>."'
+            tag: "3. TRANSFORMATION & OFFER ($5,400 IN NEW REVENUE)",
+            text: '"Within 30 days, their new site outranked their local competitors on Google Maps, and their AI phone assistant captured <strong>22 after-hours bookings</strong>, bringing in over <strong>$5,400 in new customer revenue</strong>. You get the complete modern website for <strong>$299 a month</strong>, with the option to customize your own AI Sales Engine with phone, lead, and content add-ons at will."'
           },
           {
-            tag: "4. RESPONSE / CLOSE (3-MINUTE SCREEN SHARE)",
-            text: '"All I\'d love to do is spend 3 minutes with you on a screen share to show you how <strong>[Business Name]\'s</strong> customized AI preview looks and how natural the voice assistant sounds. Do you have a quick window tomorrow morning around <strong>9:45 AM</strong> or in the afternoon at <strong>3:15 PM</strong>?"'
+            tag: "4. RESPONSE / CLOSE (3-MINUTE LOOK)",
+            text: '"All I\'d love to do is spend 3 minutes with you on a screen share to show you how <strong>[Business Name]\'s</strong> customized preview looks. Do you have a quick window tomorrow morning around <strong>9:45 AM</strong> or in the afternoon at <strong>3:15 PM</strong>?"'
           }
         ]
       }
@@ -500,8 +499,8 @@
     // Objection Data
     const objections = {
       website: {
-        reframe: "⚡ REFRAME: PASSIVE BROCHURE VS. 24/7 REVENUE ENGINE",
-        script: "Having a website is like having a sign on your door; having an AI website with a live video host and 24/7 voice phone agent is like having your best salesperson working the front desk around the clock. When someone visits your site at 9 PM on Sunday, does your site answer questions and book them in?"
+        reframe: "⚡ REFRAME: MODERN DIGITAL ASSET VS. STATIC 2018 SITE",
+        script: "Totally understand! But does your current site rank on local Google search, look modern on smartphones, and offer optional 24/7 AI phone answering? That’s why owners switch—for $299/mo, we upgrade your entire digital footprint into a revenue engine."
       },
       time: {
         reframe: "⚡ REFRAME: ZERO TIME REQUIRED (100% DONE-FOR-YOU)",
@@ -509,19 +508,19 @@
       },
       price: {
         reframe: "⚡ REFRAME: 1 SAVED CUSTOMER PAYS FOR THE MONTH",
-        script: "At an average customer ticket size of $200–$400, capturing just one single customer a month that would have called your competitor pays for the entire system. Everything after that is pure profit."
+        script: "At an average customer ticket size of $200–$400, capturing just one single customer a month covers the entire base website. Everything after that is pure profit."
       },
       email: {
         reframe: "⚡ REFRAME: 30-SECOND MOBILE VIDEO INSTEAD OF SPAM",
-        script: "I would love to, but our clients tell us an email just looks like generic marketing fluff. I actually want to text a 30-second screen recording of your shop's actual name with a live talking AI video avatar. What is your cell number?"
+        script: "I would love to, but our clients tell us an email just looks like generic marketing fluff. I actually want to text a 30-second screen recording of your shop's new modern design right to your phone. What is your cell number?"
       },
       wom: {
         reframe: "⚡ REFRAME: WORD OF MOUTH PROSPECTS GOOGLE YOU FIRST",
-        script: "Word of mouth is fantastic! But when a friend recommends your shop, the very first thing that person does is Google your name on their phone. If your site looks dated or has no instant booking, 30% of those referrals go elsewhere."
+        script: "Word of mouth is fantastic! But when a friend recommends your shop, the very first thing that person does is Google your name on their phone. If your site looks dated or has no mobile lead capture, 30% of those referrals go elsewhere."
       },
-      trust: {
-        reframe: "⚡ REFRAME: STRICTLY GUARDRAILED & PRE-PROGRAMMED",
-        script: "We do not let AI make things up. It is strictly programmed on your exact price sheet, warranty policies, and hours. If someone asks an unusual question, it instantly texts your cell phone."
+      included: {
+        reframe: "⚡ REFRAME: BASE SITE VS. MODULAR POWER-UPS",
+        script: "The $299/mo plan gives you the entire turnkey modern website, hosting, and local SEO. The 24/7 AI Phone Agent, Lead Machine, and Video Avatar are optional modular add-ons you can plug in anytime to create your custom AI Sales Engine!"
       }
     };
 
@@ -529,11 +528,11 @@
     const battlecards = {
       agency: {
         tag: "VS. $5,000 TRADITIONAL AGENCIES:",
-        text: "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, lock you into 12-month contracts, and bill $150/hr for simple edits. We launch in 48 hours for $299/mo flat with a talking video avatar and 24/7 voice receptionist included."
+        text: "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, lock you into 12-month contracts, and bill $150/hr for simple edits. We launch a modern site with built-in SEO in 48 hours for $299/mo flat with optional AI Sales Engine add-ons whenever you want."
       },
       diy: {
         tag: "VS. DIY BUILDERS (WIX / SQUARESPACE):",
-        text: "DIY builders steal 40+ hours of the owner's weekend, look amateur, and lack automated phone answering, live video avatars, and outbound lead generation. For $299/mo, we deliver an enterprise-grade automated machine."
+        text: "DIY builders steal 40+ hours of the owner's weekend, look amateur, and lack built-in local schema or plug-and-play AI phone answering. For $299/mo, we deliver an ultra-fast, professional digital storefront with zero tech effort."
       },
       yelp: {
         tag: "VS. YELP / THUMBTACK / ANGI:",

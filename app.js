@@ -7,81 +7,81 @@ document.addEventListener('DOMContentLoaded', () => {
       url: 'https://apex-tires-chicago.com',
       badge: 'Tires In Stock • Same-Day Installation',
       title: "CHICAGO'S #1 RATED TIRE & BRAKE CENTER",
-      text: 'Get instant tire pricing online, speak directly to our live AI Video Concierge, or call our 24/7 phone assistant for immediate bay reservations.',
+      text: 'Get instant tire pricing online, check bay availability, and schedule your appointment with our clean, high-converting digital storefront.',
       cta: 'FIND MY TIRE SIZE',
-      avatarQuote: '"Hi! I\'m Sarah, your virtual advisor. Click me to see current Michelin tire specials or ask about our free alignment check!"',
+      avatarQuote: '"Plug in our 24/7 AI Phone Agent, Outbound Lead Machine, or Live Video Avatar to turn this website into an autonomous revenue engine."',
       botName: 'Apex Tire AI Assistant',
       msg1: 'Hi there! Need new tires, brake inspection, or oil change today? Let me know your vehicle make/model for an instant quote!',
       msg2: 'Do you have 225/65R17 Michelin tires in stock for a Toyota RAV4?',
-      msg3: 'Yes! We have 8 Michelin Defender sets ready for same-day install. Our 24/7 Phone Agent can also confirm your bay reservation. Shall I lock in the $140/tire promo?',
-      f1: 'Live Talking Video Avatar',
-      f2: '24/7 Inbound Phone Receptionist',
-      f3: 'Outbound B2B Lead Machine',
-      f4: 'Autonomous SEO Content Generator'
+      msg3: 'Yes! We have 8 Michelin Defender sets ready for same-day install. Would you like to lock in the $140/tire promo?',
+      f1: 'Ultra-Fast Mobile 3D Layout',
+      f2: 'Built-in Local SEO & Schema',
+      f3: 'Optional 24/7 AI Phone Agent',
+      f4: 'Optional Outbound Lead Machine'
     },
     salon: {
       url: 'https://luxe-nails-spa.com',
-      badge: 'Walk-ins & 24/7 Appointments Welcome',
+      badge: 'Walk-ins & Online Appointments Welcome',
       title: 'LUXURY GEL & ACRYLIC NAIL STUDIO',
-      text: 'Browse our signature nail art gallery, check technician availability, and speak to our interactive video host to claim your new client gift.',
+      text: 'Browse our signature nail art gallery, check technician availability, and book your appointment directly on your smartphone.',
       cta: 'BOOK NAIL APPOINTMENT',
-      avatarQuote: '"Welcome to Luxe! I can show you our top trending Chrome & Russian manicure designs or book your chair for Saturday!"',
+      avatarQuote: '"Our optional 24/7 AI Voice Phone Receptionist can answer calls and book chairs while your technicians are busy doing nails."',
       botName: 'Luxe Nail AI Concierge',
       msg1: 'Welcome to Luxe Nails! Looking for a gel manicure, pedicure, or custom acrylic set this week?',
       msg2: 'Do you have availability for a Russian manicure this Saturday at 2 PM?',
       msg3: 'We have an opening with Senior Artist Mia at 2:15 PM! Would you like me to reserve that slot for you right now?',
-      f1: 'Interactive Video Stylist Host',
-      f2: '24/7 Voice & SMS Appointment Booking',
-      f3: 'Outbound Local Bridal & Event Leads',
-      f4: 'Weekly Instagram & SEO Content Publisher'
+      f1: 'Interactive Nail Art Gallery',
+      f2: 'Built-in Local Salon SEO',
+      f3: 'Optional 24/7 Voice Booking',
+      f4: 'Optional SMS Review Booster'
     },
     bakery: {
       url: 'https://sweetcraft-donuts.com',
       badge: 'Fresh Daily at 5:00 AM • Custom Party Orders',
       title: 'ARTISANAL DONUT & SPECIALTY COFFEE HOUSE',
-      text: 'Order custom catering boxes, check daily rotating flavors, and let our AI concierge calculate corporate event pricing in seconds.',
+      text: 'Order custom catering boxes, check daily rotating flavors, and let corporate offices place large orders with ease.',
       cta: 'ORDER CUSTOM BOX ONLINE',
-      avatarQuote: '"Good morning! Fresh Maple Bacon & Crème Brûlée batches are warm right now. Want me to save you a dozen?"',
+      avatarQuote: '"Add our Outbound Lead Machine to continuously scrape and deliver contact lists for every corporate office in a 10-mile radius."',
       botName: 'SweetCraft AI Helper',
       msg1: 'Fresh donuts just came out! Looking for individual donuts, catering for an office, or weekend custom flavors?',
       msg2: 'Can I order 3 dozen assorted donuts for a corporate breakfast tomorrow morning?',
       msg3: 'Absolutely! I can prepare 3 dozen gourmet glazed, maple bacon, and seasonal fruit rings for 7:30 AM pickup. Shall I lock that in?',
-      f1: 'Warm Batch AI Video greeter',
-      f2: '24/7 Phone Catering Order Line',
-      f3: 'Outbound Corporate Office Lead Machine',
-      f4: 'Automated Weekly Flavor Drop Campaigns'
+      f1: 'Modern Visual Menu Showcase',
+      f2: 'Built-in Local Bakery SEO',
+      f3: 'Optional Outbound Lead Machine',
+      f4: 'Optional 24/7 Phone Answering'
     },
     mechanic: {
       url: 'https://precision-auto-repair.com',
       badge: 'ASE Certified • 3-Year / 36k Mile Warranty',
       title: 'COMPLETE AUTO DIAGNOSTICS & TRANSMISSION REPAIR',
-      text: 'Check engine light on? Speak to our AI video diagnostic advisor for an instant repair estimate and priority slot.',
+      text: 'Check engine light on? Get instant service estimates and schedule diagnostic bay time without calling around.',
       cta: 'GET DIAGNOSTIC ESTIMATE',
-      avatarQuote: '"Hello! Hear squeaking or feel shaking when braking? Click me for an instant diagnostic check and free quote."',
+      avatarQuote: '"Stop wiping grease off your hands to answer price calls—our optional AI Phone Agent handles quotes and bookings for you."',
       botName: 'Precision Auto AI Tech',
       msg1: 'Hello! Experiencing brake squeal, check engine light, or need routine maintenance?',
       msg2: 'My 2018 Ford F-150 is making a grinding noise when braking at low speed.',
       msg3: 'That typically indicates worn brake pads or rotor contact. We offer a free multi-point brake inspection. Can I book you in for 9:00 AM tomorrow?',
-      f1: 'Interactive Diagnostic Video Avatar',
-      f2: '24/7 Voice AI Dispatch & Answering',
-      f3: 'Local Commercial Fleet Lead Machine',
-      f4: 'Automated Local Auto SEO Articles'
+      f1: 'Diagnostic Symptom Quote Form',
+      f2: 'Built-in Mechanic Local SEO',
+      f3: 'Optional 24/7 Voice Dispatch',
+      f4: 'Optional Commercial Fleet Leads'
     },
     hvac: {
       url: 'https://metro-cooling-heating.com',
-      badge: '24/7 Emergency Dispatch • 0% Financing',
+      badge: 'Fast Emergency Dispatch • 0% Financing',
       title: 'FAST RESIDENTIAL AC & HEATING REPAIR',
-      text: 'AC blowing warm air? Our live video avatar and emergency 24/7 phone agent dispatch technicians to your door in under 60 seconds.',
-      cta: 'DISPATCH EMERGENCY TECH',
-      avatarQuote: '"Need immediate cooling or heating repair? Our emergency AI line is dispatching on-duty techs right now across the city."',
+      text: 'AC blowing warm air? Our emergency dispatch request form connects you with a certified technician in under 60 seconds.',
+      cta: 'REQUEST DISPATCH NOW',
+      avatarQuote: '"When AC breaks at 8 PM on a Sunday, our optional 24/7 Voice AI dispatches technicians in under 2 seconds."',
       botName: 'Metro Climate AI Dispatch',
-      msg1: 'Emergency AC or furnace issue? Our certified technicians are on call 24/7 across the metro area.',
+      msg1: 'Emergency AC or furnace issue? Our certified technicians are on call across the metro area.',
       msg2: 'Our AC stopped cooling and it is 85 degrees inside our house.',
-      msg3: 'Our emergency tech Mike is in your area and can arrive between 1:00 PM and 2:30 PM. What is your street address?',
-      f1: 'Emergency Video AI Receptionist',
-      f2: '24/7 Inbound Voice Dispatch Line',
-      f3: 'Local Property Manager Lead Machine',
-      f4: 'Seasonal Tune-up Local SEO Engine'
+      msg3: 'Our on-call tech Mike is in your area and can arrive between 1:00 PM and 2:30 PM. What is your street address?',
+      f1: 'Fast Emergency Request Form',
+      f2: 'Built-in Local HVAC SEO',
+      f3: 'Optional 24/7 Voice AI Dispatch',
+      f4: 'Optional Review Booster SMS'
     }
   };
 
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate selected addons list in summary
     selectedAddonsList.innerHTML = '';
     if (selectedAddons.length === 0) {
-      selectedAddonsList.innerHTML = '<div class="breakdown-row" style="color:#64748b;"><em>No additional AI modules selected</em></div>';
+      selectedAddonsList.innerHTML = '<div class="breakdown-row" style="color:#64748b;"><em>No additional AI modules selected (Base Plan Only)</em></div>';
     } else {
       selectedAddons.forEach(item => {
         const row = document.createElement('div');
@@ -172,10 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Dynamic ROI Estimator based on active modules
+    // Dynamic ROI Estimator
     const activeCount = selectedAddons.length;
-    const estimatedJobs = 4 + Math.round(activeCount * 2.2);
-    const estimatedRevenue = estimatedJobs * 280;
+    const estimatedJobs = 2 + Math.round(activeCount * 1.8);
+    const estimatedRevenue = estimatedJobs * 250;
     roiValEl.textContent = `+$${estimatedRevenue.toLocaleString()} / mo`;
   }
 
