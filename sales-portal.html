@@ -47,26 +47,26 @@
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .niche-pills {
+    .niche-pills, .pattern-pills {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    .niche-btn {
-      padding: 8px 14px;
+    .niche-btn, .pattern-btn {
+      padding: 7px 13px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-full);
       color: var(--text-muted);
       font-family: var(--font-headings);
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       font-weight: 500;
       letter-spacing: 0.8px;
       cursor: pointer;
       transition: var(--transition-smooth);
     }
-    .niche-btn.active, .niche-btn:hover {
+    .niche-btn.active, .niche-btn:hover, .pattern-btn.active, .pattern-btn:hover {
       background: rgba(99, 102, 241, 0.2);
       border-color: var(--primary);
       color: #ffffff;
@@ -236,8 +236,26 @@
           <span style="font-size: 0.8rem; color: #10b981; font-weight: 600;">● READY TO DIAL</span>
         </div>
 
+        <!-- Pattern Interrupt Selector -->
+        <label style="font-size: 0.76rem; font-family: var(--font-headings); color: #38bdf8; display: block; margin-bottom: 6px;">SELECT PATTERN INTERRUPT STYLE (FIRST 7 SECONDS):</label>
+        <div class="pattern-pills" id="pattern-selector">
+          <button class="pattern-btn active" data-pattern="shopper">🕵️ MYSTERY SHOPPER TEST</button>
+          <button class="pattern-btn" data-pattern="voss">🧠 CHRIS VOSS REVERSE</button>
+          <button class="pattern-btn" data-pattern="honest">🎯 100% HONEST COLD CALL</button>
+          <button class="pattern-btn" data-pattern="antiagency">🛡️ ANTI-AGENCY HOOK</button>
+        </div>
+
+        <!-- Step 1: Opener Box -->
+        <div class="script-step-box" style="border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.08);">
+          <span class="step-tag" id="step1-tag">STEP 1: THE MYSTERY SHOPPER DIAGNOSTIC (7 SECONDS)</span>
+          <button class="copy-btn" onclick="copyText('opener-text')">COPY</button>
+          <p class="script-text" id="opener-text">
+            "Hey [Owner Name], [My Name] here with LocalPulse AI. Real quick—I ran a 30-second test on your website and shop phone yesterday at 7:15 PM to see what happens when a customer needs an emergency quote after hours. It went to voicemail, so I tested your competitor down the street and they had live booking. Can I get 25 seconds to show you what we found?"
+          </p>
+        </div>
+
         <!-- Niche Selector -->
-        <label style="font-size: 0.78rem; font-family: var(--font-headings); color: #94a3b8; display: block; margin-bottom: 8px;">SELECT TARGET PROSPECT NICHE:</label>
+        <label style="font-size: 0.76rem; font-family: var(--font-headings); color: #94a3b8; display: block; margin-bottom: 6px; margin-top: 18px;">SELECT TARGET PROSPECT NICHE:</label>
         <div class="niche-pills" id="niche-selector">
           <button class="niche-btn active" data-niche="tires">🛞 TIRE SHOP / AUTO</button>
           <button class="niche-btn" data-niche="salon">💅 NAIL SALON / SPA</button>
@@ -246,21 +264,12 @@
           <button class="niche-btn" data-niche="hvac">❄️ HVAC / PLUMBING</button>
         </div>
 
-        <!-- Step 1: Opener -->
-        <div class="script-step-box">
-          <span class="step-tag">STEP 1: PATTERN INTERRUPT OPENER (10 SECONDS)</span>
-          <button class="copy-btn" onclick="copyText('opener-text')">COPY</button>
-          <p class="script-text" id="opener-text">
-            "Hey [Owner Name], this is [My Name] with LocalPulse AI. I know I’m catching you right in the middle of the shop floor—do you have 30 seconds to tell me to get lost, or can I tell you why I called your shop specifically?"
-          </p>
-        </div>
-
         <!-- Step 2: Problem & Acute Hook -->
         <div class="script-step-box">
           <span class="step-tag">STEP 2: THE ACUTE LOCAL HOOK (25 SECONDS)</span>
           <button class="copy-btn" onclick="copyText('hook-text')">COPY</button>
           <p class="script-text" id="hook-text">
-            "I was looking at your shop in [City]. When customers search for tire replacements in [Neighborhood] after 6 PM or while your bays are busy, who answers the phone? Most shops lose 10-15 jobs a month right there."
+            "When customers search for tire replacements or brake service in [City] after 6 PM or while your bays are busy, who currently answers the phone? Most shops lose 10-15 tire jobs a month right there."
           </p>
         </div>
 
@@ -269,7 +278,7 @@
           <span class="step-tag">STEP 3: THE AI SUPER-SKILL PITCH (30 SECONDS)</span>
           <button class="copy-btn" onclick="copyText('pitch-text')">COPY</button>
           <p class="script-text" id="pitch-text">
-            "We build local shops a turnkey AI website with a <strong>live interactive video avatar</strong> that greets visitors and a <strong>24/7 AI voice phone agent</strong> that answers calls, quotes prices, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts."
+            "We build local tire shops a turnkey AI website with a <strong>live interactive video avatar</strong> that greets visitors and a <strong>24/7 AI voice phone agent</strong> that answers calls, quotes tire sizes, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts."
           </p>
         </div>
 
@@ -278,7 +287,7 @@
           <span class="step-tag" style="color: #a5b4fc;">STEP 4: LOW-FRICTION CLOSE FOR 5-MIN PREVIEW</span>
           <button class="copy-btn" onclick="copyText('close-text')">COPY</button>
           <p class="script-text" id="close-text">
-            "Look [Owner Name], all I want to do is generate a 100% custom live preview with your logo, prices, and talking video avatar. If you like it, we can launch it in 48h. If not, no worries. Does tomorrow morning at 10:15 AM or 2:30 PM work for a 3-minute look?"
+            "All I want to do is generate a 100% custom live preview with your logo, tire inventory lookups, and talking video avatar. Does tomorrow at 10:15 AM or 2:30 PM work for a quick 3-minute look?"
           </p>
         </div>
       </div>
@@ -374,10 +383,30 @@
   </div>
 
   <script>
+    // Pattern Interrupt Data
+    const patternData = {
+      shopper: {
+        tag: "STEP 1: THE MYSTERY SHOPPER DIAGNOSTIC (7 SECONDS)",
+        text: '"Hey [Owner Name], [My Name] here with LocalPulse AI. Real quick—I ran a 30-second test on your website and shop phone yesterday at 7:15 PM to see what happens when a customer needs an emergency quote after hours. It went to voicemail, so I tested your competitor down the street and they had live booking. Can I get 25 seconds to show you what we found?"'
+      },
+      voss: {
+        tag: "STEP 1: THE CHRIS VOSS REVERSE PSYCHOLOGY (7 SECONDS)",
+        text: '"Hey [Owner Name]—this is [My Name] with LocalPulse AI. I\'m guessing I\'m catching you at the absolute worst possible time today?... I figured! Give me 20 seconds to explain why your shop in [City] popped up on my screen, and if it doesn\'t make sense, tell me to jump off a cliff. Fair enough?"'
+      },
+      honest: {
+        tag: "STEP 1: RADICAL TRANSPARENCY / 100% HONEST (7 SECONDS)",
+        text: '"Hey [Owner Name], I’m not gonna pretend this isn\'t a cold call. You can hang up right now if you want, or give me 25 seconds to explain how we just got a shop in [Nearby City] 22 booked bay appointments with a live talking AI video avatar and 24/7 phone receptionist. How\'s that sound?"'
+      },
+      antiagency: {
+        tag: "STEP 1: THE ANTI-AGENCY LIFE RAFT (7 SECONDS)",
+        text: '"Hey [Owner Name], [My Name] with LocalPulse. I promise I’m not calling to pitch you $5,000 agency retainers or scammy Yelp ads. We built a 24/7 AI voice phone agent that answers your shop calls while you\'re busy with customers so you don\'t lose jobs. Do you have 20 seconds to hear how it works?"'
+      }
+    };
+
     // Niche Script Data
     const nicheScripts = {
       tires: {
-        hook: "I was looking at your shop in [City]. When customers search for tire replacements in [Neighborhood] after 6 PM or while your bays are busy, who answers the phone? Most shops lose 10-15 tire jobs a month right there.",
+        hook: "When customers search for tire replacements or brake service in [City] after 6 PM or while your bays are busy, who currently answers the phone? Most shops lose 10-15 tire jobs a month right there.",
         pitch: "We build local tire shops a turnkey AI website with a live interactive video avatar that greets visitors and a 24/7 AI voice phone agent that answers calls, quotes tire sizes, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts.",
         close: "All I want to do is generate a 100% custom live preview with your logo, tire inventory lookups, and talking video avatar. Does tomorrow at 10:15 AM or 2:30 PM work for a quick 3-minute look?"
       },
@@ -446,6 +475,20 @@
         text: "On Yelp and Angi, you pay $50+ per lead that gets shared with 4 other local competitors in a race to the bottom. With LocalPulse AI, you own an automated digital asset that generates exclusive 1-on-1 customers directly for your shop."
       }
     };
+
+    // Pattern Interrupt Switching
+    document.querySelectorAll('.pattern-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const pattern = btn.getAttribute('data-pattern');
+        const data = patternData[pattern];
+        if (data) {
+          document.getElementById('step1-tag').textContent = data.tag;
+          document.getElementById('opener-text').innerHTML = data.text;
+        }
+      });
+    });
 
     // Niche Switching
     document.querySelectorAll('.niche-btn').forEach(btn => {
