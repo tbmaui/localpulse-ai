@@ -1,0 +1,13 @@
+# Node & OS
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel/
+
+# Temporary files & logs
+.tmp/
+*.log
+.env
+.env.local

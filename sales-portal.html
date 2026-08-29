@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalPulse AI — Outbound Sales Enablement Portal & Rep Teleprompter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Dedicated Sales Portal Styles */
+    .portal-nav {
+      background: #090e1a;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.25);
+      padding: 14px 0;
+    }
+    .portal-tag {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-family: var(--font-headings);
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      margin-top: 30px;
+      margin-bottom: 60px;
+    }
+    .teleprompter-card, .tools-card {
+      background: #0f1629;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .card-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .niche-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .niche-btn {
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+      font-family: var(--font-headings);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .niche-btn.active, .niche-btn:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    .script-step-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .step-tag {
+      font-family: var(--font-headings);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .script-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #f1f5f9;
+    }
+    .script-text strong {
+      color: #38bdf8;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-family: var(--font-headings);
+    }
+    .copy-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .obj-btn {
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: #cbd5e1;
+      font-family: var(--font-headings);
+      font-size: 0.76rem;
+      letter-spacing: 0.6px;
+      text-align: left;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .obj-btn:hover, .obj-btn.active {
+      background: rgba(99, 102, 241, 0.22);
+      border-color: var(--primary-glow);
+      color: #ffffff;
+    }
+    .obj-display-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.05) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      min-height: 140px;
+    }
+    .obj-reframe {
+      font-family: var(--font-headings);
+      font-size: 0.82rem;
+      color: #34d399;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .battle-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .battle-tab {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-family: var(--font-headings);
+      cursor: pointer;
+    }
+    .battle-tab.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .quick-links-box {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    .quick-links-box a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-right: 14px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .quick-links-box a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Atmospheric Glows -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar portal-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚡</div>
+        <span class="brand-name">LOCALPULSE<span class="brand-highlight">.AI</span></span>
+        <span class="portal-tag">OUTBOUND SALES HUB</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Main Website</a>
+        <a href="#teleprompter">Cold Call Script</a>
+        <a href="#objections">Objections</a>
+        <a href="#battlecards">Battlecards</a>
+        <a href="#pricing-sheet">Pricing Cheat Sheet</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="sales-enablement/04-pitch-deck.md" class="btn btn-secondary btn-sm" target="_blank">View 12-Slide Deck</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="portal-grid">
+      
+      <!-- LEFT COLUMN: Real-Time Cold Calling Teleprompter -->
+      <div class="teleprompter-card" id="teleprompter">
+        <div class="card-header-flex">
+          <div>
+            <span class="section-tag">LIVE CALL FLOW</span>
+            <h3 style="font-size: 1.25rem;">COLD CALL TELEPROMPTER</h3>
+          </div>
+          <span style="font-size: 0.8rem; color: #10b981; font-weight: 600;">● READY TO DIAL</span>
+        </div>
+
+        <!-- Niche Selector -->
+        <label style="font-size: 0.78rem; font-family: var(--font-headings); color: #94a3b8; display: block; margin-bottom: 8px;">SELECT TARGET PROSPECT NICHE:</label>
+        <div class="niche-pills" id="niche-selector">
+          <button class="niche-btn active" data-niche="tires">🛞 TIRE SHOP / AUTO</button>
+          <button class="niche-btn" data-niche="salon">💅 NAIL SALON / SPA</button>
+          <button class="niche-btn" data-niche="bakery">🍩 BAKERY / DONUTS</button>
+          <button class="niche-btn" data-niche="mechanic">🔧 AUTO MECHANIC</button>
+          <button class="niche-btn" data-niche="hvac">❄️ HVAC / PLUMBING</button>
+        </div>
+
+        <!-- Step 1: Opener -->
+        <div class="script-step-box">
+          <span class="step-tag">STEP 1: PATTERN INTERRUPT OPENER (10 SECONDS)</span>
+          <button class="copy-btn" onclick="copyText('opener-text')">COPY</button>
+          <p class="script-text" id="opener-text">
+            "Hey [Owner Name], this is [My Name] with LocalPulse AI. I know I’m catching you right in the middle of the shop floor—do you have 30 seconds to tell me to get lost, or can I tell you why I called your shop specifically?"
+          </p>
+        </div>
+
+        <!-- Step 2: Problem & Acute Hook -->
+        <div class="script-step-box">
+          <span class="step-tag">STEP 2: THE ACUTE LOCAL HOOK (25 SECONDS)</span>
+          <button class="copy-btn" onclick="copyText('hook-text')">COPY</button>
+          <p class="script-text" id="hook-text">
+            "I was looking at your shop in [City]. When customers search for tire replacements in [Neighborhood] after 6 PM or while your bays are busy, who answers the phone? Most shops lose 10-15 jobs a month right there."
+          </p>
+        </div>
+
+        <!-- Step 3: AI Super-Skill Solution -->
+        <div class="script-step-box">
+          <span class="step-tag">STEP 3: THE AI SUPER-SKILL PITCH (30 SECONDS)</span>
+          <button class="copy-btn" onclick="copyText('pitch-text')">COPY</button>
+          <p class="script-text" id="pitch-text">
+            "We build local shops a turnkey AI website with a <strong>live interactive video avatar</strong> that greets visitors and a <strong>24/7 AI voice phone agent</strong> that answers calls, quotes prices, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts."
+          </p>
+        </div>
+
+        <!-- Step 4: 5-Minute Preview Close -->
+        <div class="script-step-box" style="border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.08);">
+          <span class="step-tag" style="color: #a5b4fc;">STEP 4: LOW-FRICTION CLOSE FOR 5-MIN PREVIEW</span>
+          <button class="copy-btn" onclick="copyText('close-text')">COPY</button>
+          <p class="script-text" id="close-text">
+            "Look [Owner Name], all I want to do is generate a 100% custom live preview with your logo, prices, and talking video avatar. If you like it, we can launch it in 48h. If not, no worries. Does tomorrow morning at 10:15 AM or 2:30 PM work for a 3-minute look?"
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Rapid Objection Handler & Battlecards -->
+      <div class="tools-card">
+        
+        <!-- Objection Flash Matrix -->
+        <div id="objections" style="margin-bottom: 30px;">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">RAPID RESPONSE</span>
+              <h3 style="font-size: 1.15rem;">1-CLICK OBJECTION BUSTER</h3>
+            </div>
+            <span style="font-size: 0.72rem; color: #38bdf8;">CLICK MID-CALL</span>
+          </div>
+
+          <div class="obj-grid">
+            <button class="obj-btn active" data-obj="website">"ALREADY HAVE A WEBSITE"</button>
+            <button class="obj-btn" data-obj="time">"I DON'T HAVE TIME"</button>
+            <button class="obj-btn" data-obj="price">"TOO EXPENSIVE ($299)"</button>
+            <button class="obj-btn" data-obj="email">"JUST SEND AN EMAIL"</button>
+            <button class="obj-btn" data-obj="wom">"ALL WORD OF MOUTH"</button>
+            <button class="obj-btn" data-obj="trust">"DON'T TRUST AI"</button>
+          </div>
+
+          <div class="obj-display-box" id="obj-display">
+            <div class="obj-reframe" id="obj-reframe">⚡ REFRAME: PASSIVE BROCHURE VS. 24/7 REVENUE ENGINE</div>
+            <p class="script-text" id="obj-script" style="font-size: 0.88rem;">
+              "Having a website is like having a sign on your door; having an AI website with a live video host and 24/7 voice phone agent is like having your best salesperson working the front desk around the clock. When someone visits your site at 9 PM on Sunday, does your site answer questions and book them in?"
+            </p>
+            <button class="copy-btn" style="top:auto; bottom:12px; right:12px;" onclick="copyText('obj-script')">COPY SCRIPT</button>
+          </div>
+        </div>
+
+        <!-- Competitor Battlecard Switcher -->
+        <div id="battlecards" style="margin-bottom: 30px;">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">COMPETITOR KILLERS</span>
+              <h3 style="font-size: 1.15rem;">BATTLE CARD MATRIX</h3>
+            </div>
+          </div>
+
+          <div class="battle-tabs">
+            <button class="battle-tab active" data-bat="agency">VS. $5K AGENCIES</button>
+            <button class="battle-tab" data-bat="diy">VS. DIY BUILDERS</button>
+            <button class="battle-tab" data-bat="yelp">VS. YELP / ANGI</button>
+          </div>
+
+          <div class="script-step-box" id="battle-display" style="min-height: 120px;">
+            <span class="step-tag" id="bat-tag">LANDMINE QUESTION:</span>
+            <p class="script-text" id="bat-text" style="font-size: 0.86rem;">
+              "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, and bill $150/hr for simple edits. We launch in 48 hours for $299/mo flat with a talking video avatar and 24/7 voice receptionist included."
+            </p>
+          </div>
+        </div>
+
+        <!-- Pricing Cheat Sheet -->
+        <div id="pricing-sheet">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">CHEAT SHEET</span>
+              <h3 style="font-size: 1.15rem;">QUICK PRICING MENU</h3>
+            </div>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.8;">
+            <div>🔹 <strong>Core AI Website:</strong> $598 Month 1 ($299 setup + $299 M1) → $299/mo recurring</div>
+            <div>🔹 <strong>Interactive AI Live Video Avatar:</strong> +$89/mo</div>
+            <div>🔹 <strong>24/7 AI Voice Phone Receptionist:</strong> +$99/mo</div>
+            <div>🔹 <strong>Unlimited Outbound Lead Machine:</strong> +$149/mo (Premium)</div>
+            <div>🔹 <strong>Automated AI SEO & Content Machine:</strong> +$89/mo</div>
+            <div>🔹 <strong>24/7 Web Chat Concierge:</strong> +$69/mo</div>
+            <div>🔹 <strong>5-Star Review Booster:</strong> +$49/mo</div>
+            <div>🔹 <strong>Missed-Call Instant AI Textback:</strong> +$59/mo</div>
+          </div>
+        </div>
+
+        <!-- Direct Document Links -->
+        <div class="quick-links-box">
+          <span style="font-family: var(--font-headings); font-size: 0.72rem; color: var(--text-muted); display: block; margin-bottom: 4px;">ENABLEMENT SOURCE DOCS:</span>
+          <a href="sales-enablement/01-cold-call-script-and-talk-tracks.md" target="_blank">📄 Full Scripts</a>
+          <a href="sales-enablement/02-objection-handling-bible.md" target="_blank">📄 Objection Bible</a>
+          <a href="sales-enablement/03-competitor-battlecards.md" target="_blank">📄 Battlecards</a>
+          <a href="sales-enablement/04-pitch-deck.md" target="_blank">📄 Pitch Deck</a>
+          <a href="sales-enablement/05-one-pager-leave-behind.md" target="_blank">📄 One-Pager</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Niche Script Data
+    const nicheScripts = {
+      tires: {
+        hook: "I was looking at your shop in [City]. When customers search for tire replacements in [Neighborhood] after 6 PM or while your bays are busy, who answers the phone? Most shops lose 10-15 tire jobs a month right there.",
+        pitch: "We build local tire shops a turnkey AI website with a live interactive video avatar that greets visitors and a 24/7 AI voice phone agent that answers calls, quotes tire sizes, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts.",
+        close: "All I want to do is generate a 100% custom live preview with your logo, tire inventory lookups, and talking video avatar. Does tomorrow at 10:15 AM or 2:30 PM work for a quick 3-minute look?"
+      },
+      salon: {
+        hook: "How many times a day are your nail techs in the middle of a full set or pedicure and cannot pick up the phone to book an appointment? Clients hang up and call the salon down the street.",
+        pitch: "We build luxury AI salon websites with an interactive live video concierge and 24/7 voice booking that lets clients book chairs, view nail art, and get SMS reminders automatically. No upfront agency fees—just $299/mo.",
+        close: "Can I text you a 2-minute video preview with your salon's actual name and talking video stylist tomorrow at 11 AM?"
+      },
+      bakery: {
+        hook: "Love what you guys are doing with your fresh baked goods! Quick question: are you currently capturing corporate breakfast and office catering orders on autopilot from local businesses?",
+        pitch: "We install an AI website that lets local offices order 5-10 dozen custom boxes online, plus an outbound lead machine that pulls contact info for every corporate office within 10 miles. It's $299/mo, live in 48 hours.",
+        close: "Can I send you a quick preview of how corporate offices in [City] would order catering directly through your AI website?"
+      },
+      mechanic: {
+        hook: "How much time do you lose each day wiping grease off your hands just to answer the phone and give price estimates to tire-kickers? Every minute on the phone is a minute not turning wrenches.",
+        pitch: "We give mechanics a 24/7 AI Voice Phone Agent and interactive video website that diagnoses symptoms, gives price ranges, and books repair appointments directly into your calendar without you touching the phone. It's $299/month, no contract.",
+        close: "Are you open to seeing a 60-second walkthrough with your shop's services tomorrow at 10:30 AM?"
+      },
+      hvac: {
+        hook: "When an AC breaks on a Sunday afternoon in 90-degree heat, homeowners call 3 companies. Whoever answers first and confirms a technician dispatch wins the $1,500 job.",
+        pitch: "Our 24/7 AI Voice Dispatch Agent answers incoming emergency calls in under 2 seconds, qualifies the system issue, and books the technician visit into your scheduling software automatically. Turnkey in 48 hours for $299/mo.",
+        close: "Can I show you how our AI dispatch handles an inbound emergency call in real-time tomorrow at 9:00 AM?"
+      }
+    };
+
+    // Objection Data
+    const objections = {
+      website: {
+        reframe: "⚡ REFRAME: PASSIVE BROCHURE VS. 24/7 REVENUE ENGINE",
+        script: "Having a website is like having a sign on your door; having an AI website with a live video host and 24/7 voice phone agent is like having your best salesperson working the front desk around the clock. When someone visits your site at 9 PM on Sunday, does your site answer questions and book them in?"
+      },
+      time: {
+        reframe: "⚡ REFRAME: ZERO TIME REQUIRED (100% DONE-FOR-YOU)",
+        script: "That is exactly why busy shop owners choose us. It is 100% Done-For-You. You do not touch code, design pages, or configure AI. We do everything and hand you a live working preview in 48 hours."
+      },
+      price: {
+        reframe: "⚡ REFRAME: 1 SAVED CUSTOMER PAYS FOR THE MONTH",
+        script: "At an average customer ticket size of $200–$400, capturing just one single customer a month that would have called your competitor pays for the entire system. Everything after that is pure profit."
+      },
+      email: {
+        reframe: "⚡ REFRAME: 30-SECOND MOBILE VIDEO INSTEAD OF SPAM",
+        script: "I would love to, but our clients tell us an email just looks like generic marketing fluff. I actually want to text a 30-second screen recording of your shop's actual name with a live talking AI video avatar. What is your cell number?"
+      },
+      wom: {
+        reframe: "⚡ REFRAME: WORD OF MOUTH PROSPECTS GOOGLE YOU FIRST",
+        script: "Word of mouth is fantastic! But when a friend recommends your shop, the very first thing that person does is Google your name on their phone. If your site looks dated or has no instant booking, 30% of those referrals go elsewhere."
+      },
+      trust: {
+        reframe: "⚡ REFRAME: STRICTLY GUARDRAILED & PRE-PROGRAMMED",
+        script: "We do not let AI make things up. It is strictly programmed on your exact price sheet, warranty policies, and hours. If someone asks an unusual question, it instantly texts your cell phone."
+      }
+    };
+
+    // Battlecard Data
+    const battlecards = {
+      agency: {
+        tag: "VS. $5,000 TRADITIONAL AGENCIES:",
+        text: "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, lock you into 12-month contracts, and bill $150/hr for simple edits. We launch in 48 hours for $299/mo flat with a talking video avatar and 24/7 voice receptionist included."
+      },
+      diy: {
+        tag: "VS. DIY BUILDERS (WIX / SQUARESPACE):",
+        text: "DIY builders steal 40+ hours of the owner's weekend, look amateur, and lack automated phone answering, live video avatars, and outbound lead generation. For $299/mo, we deliver an enterprise-grade automated machine."
+      },
+      yelp: {
+        tag: "VS. YELP / THUMBTACK / ANGI:",
+        text: "On Yelp and Angi, you pay $50+ per lead that gets shared with 4 other local competitors in a race to the bottom. With LocalPulse AI, you own an automated digital asset that generates exclusive 1-on-1 customers directly for your shop."
+      }
+    };
+
+    // Niche Switching
+    document.querySelectorAll('.niche-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const niche = btn.getAttribute('data-niche');
+        const data = nicheScripts[niche];
+        if (data) {
+          document.getElementById('hook-text').innerHTML = data.hook;
+          document.getElementById('pitch-text').innerHTML = data.pitch;
+          document.getElementById('close-text').innerHTML = data.close;
+        }
+      });
+    });
+
+    // Objection Switching
+    document.querySelectorAll('.obj-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.obj-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const obj = btn.getAttribute('data-obj');
+        const data = objections[obj];
+        if (data) {
+          document.getElementById('obj-reframe').textContent = data.reframe;
+          document.getElementById('obj-script').textContent = data.script;
+        }
+      });
+    });
+
+    // Battlecard Switching
+    document.querySelectorAll('.battle-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.battle-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const bat = btn.getAttribute('data-bat');
+        const data = battlecards[bat];
+        if (data) {
+          document.getElementById('bat-tag').textContent = data.tag;
+          document.getElementById('bat-text').textContent = data.text;
+        }
+      });
+    });
+
+    // Copy to Clipboard
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard!');
+      });
+    }
+  </script>
+</body>
+</html>
