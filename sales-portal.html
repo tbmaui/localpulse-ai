@@ -27,7 +27,7 @@
     }
     .portal-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
       gap: 28px;
       margin-top: 30px;
       margin-bottom: 60px;
@@ -47,67 +47,90 @@
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .niche-pills, .pattern-pills {
+    .framework-pills, .niche-pills, .pattern-pills {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
       margin-bottom: 16px;
     }
-    .niche-btn, .pattern-btn {
+    .framework-btn, .niche-btn, .pattern-btn {
       padding: 7px 13px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-full);
       color: var(--text-muted);
       font-family: var(--font-headings);
-      font-size: 0.73rem;
+      font-size: 0.74rem;
       font-weight: 500;
       letter-spacing: 0.8px;
       cursor: pointer;
       transition: var(--transition-smooth);
     }
-    .niche-btn.active, .niche-btn:hover, .pattern-btn.active, .pattern-btn:hover {
-      background: rgba(99, 102, 241, 0.2);
+    .framework-btn.active, .framework-btn:hover,
+    .niche-btn.active, .niche-btn:hover,
+    .pattern-btn.active, .pattern-btn:hover {
+      background: rgba(99, 102, 241, 0.22);
       border-color: var(--primary);
       color: #ffffff;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.3);
     }
-    .script-step-box {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .script-container {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-md);
-      padding: 16px 20px;
-      margin-bottom: 14px;
+      padding: 24px;
       position: relative;
     }
-    .step-tag {
+    .script-title-tag {
       font-family: var(--font-headings);
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       color: var(--accent-cyan);
       font-weight: 600;
+      letter-spacing: 1.2px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .script-content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .script-para-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 4px;
+    }
+    .script-para-tag {
+      font-family: var(--font-headings);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #38bdf8;
       letter-spacing: 1px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       display: block;
     }
     .script-text {
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 0.94rem;
+      line-height: 1.6;
       color: #f1f5f9;
     }
     .script-text strong {
       color: #38bdf8;
+      font-weight: 600;
     }
     .copy-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
       color: var(--text-muted);
       font-size: 0.72rem;
-      padding: 4px 8px;
+      padding: 4px 10px;
       cursor: pointer;
       font-family: var(--font-headings);
+      transition: var(--transition-smooth);
     }
     .copy-btn:hover {
       background: var(--primary);
@@ -143,6 +166,7 @@
       border-radius: var(--radius-md);
       padding: 18px;
       min-height: 140px;
+      position: relative;
     }
     .obj-reframe {
       font-family: var(--font-headings);
@@ -226,36 +250,28 @@
   <div class="container">
     <div class="portal-grid">
       
-      <!-- LEFT COLUMN: Real-Time Cold Calling Teleprompter -->
+      <!-- LEFT COLUMN: Complete End-to-End Teleprompter -->
       <div class="teleprompter-card" id="teleprompter">
         <div class="card-header-flex">
           <div>
-            <span class="section-tag">LIVE CALL FLOW</span>
-            <h3 style="font-size: 1.25rem;">COLD CALL TELEPROMPTER</h3>
+            <span class="section-tag">FULL 1-PERSON TALK TRACK</span>
+            <h3 style="font-size: 1.25rem;">END-TO-END TELEPROMPTER</h3>
           </div>
           <span style="font-size: 0.8rem; color: #10b981; font-weight: 600;">● READY TO DIAL</span>
         </div>
 
-        <!-- Pattern Interrupt Selector -->
-        <label style="font-size: 0.76rem; font-family: var(--font-headings); color: #38bdf8; display: block; margin-bottom: 6px;">SELECT PATTERN INTERRUPT STYLE (FIRST 7 SECONDS):</label>
-        <div class="pattern-pills" id="pattern-selector">
-          <button class="pattern-btn active" data-pattern="shopper">🕵️ MYSTERY SHOPPER TEST</button>
-          <button class="pattern-btn" data-pattern="voss">🧠 CHRIS VOSS REVERSE</button>
-          <button class="pattern-btn" data-pattern="honest">🎯 100% HONEST COLD CALL</button>
-          <button class="pattern-btn" data-pattern="antiagency">🛡️ ANTI-AGENCY HOOK</button>
+        <!-- Framework Selector -->
+        <label style="font-size: 0.76rem; font-family: var(--font-headings); color: #38bdf8; display: block; margin-bottom: 6px;">SELECT PERSUASION FRAMEWORK:</label>
+        <div class="framework-pills" id="framework-selector">
+          <button class="framework-btn active" data-frame="aida">🔥 AIDA (ATTENTION / ACTION)</button>
+          <button class="framework-btn" data-frame="sixw">🧭 THE 6 W's (WHO/WHAT/WHY)</button>
+          <button class="framework-btn" data-frame="pas">⚡ PAS (PROBLEM / AGITATE / RELIEF)</button>
+          <button class="framework-btn" data-frame="fab">🎯 FAB (FEATURE / BENEFIT)</button>
+          <button class="framework-btn" data-frame="pastor">📖 PASTOR (STORY & OFFER)</button>
         </div>
 
-        <!-- Step 1: Opener Box -->
-        <div class="script-step-box" style="border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.08);">
-          <span class="step-tag" id="step1-tag">STEP 1: THE MYSTERY SHOPPER DIAGNOSTIC (7 SECONDS)</span>
-          <button class="copy-btn" onclick="copyText('opener-text')">COPY</button>
-          <p class="script-text" id="opener-text">
-            "Hey [Owner Name], [My Name] here with LocalPulse AI. Real quick—I ran a 30-second test on your website and shop phone yesterday at 7:15 PM to see what happens when a customer needs an emergency quote after hours. It went to voicemail, so I tested your competitor down the street and they had live booking. Can I get 25 seconds to show you what we found?"
-          </p>
-        </div>
-
-        <!-- Niche Selector -->
-        <label style="font-size: 0.76rem; font-family: var(--font-headings); color: #94a3b8; display: block; margin-bottom: 6px; margin-top: 18px;">SELECT TARGET PROSPECT NICHE:</label>
+        <!-- Target Niche Selector -->
+        <label style="font-size: 0.76rem; font-family: var(--font-headings); color: #94a3b8; display: block; margin-bottom: 6px;">CUSTOMIZE PROSPECT NICHE:</label>
         <div class="niche-pills" id="niche-selector">
           <button class="niche-btn active" data-niche="tires">🛞 TIRE SHOP / AUTO</button>
           <button class="niche-btn" data-niche="salon">💅 NAIL SALON / SPA</button>
@@ -264,31 +280,16 @@
           <button class="niche-btn" data-niche="hvac">❄️ HVAC / PLUMBING</button>
         </div>
 
-        <!-- Step 2: Problem & Acute Hook -->
-        <div class="script-step-box">
-          <span class="step-tag">STEP 2: THE ACUTE LOCAL HOOK (25 SECONDS)</span>
-          <button class="copy-btn" onclick="copyText('hook-text')">COPY</button>
-          <p class="script-text" id="hook-text">
-            "When customers search for tire replacements or brake service in [City] after 6 PM or while your bays are busy, who currently answers the phone? Most shops lose 10-15 tire jobs a month right there."
-          </p>
-        </div>
+        <!-- Full Continuous Script Display -->
+        <div class="script-container" id="script-container">
+          <div class="script-title-tag">
+            <span id="script-heading-tag">AIDA FRAMEWORK: COMPLETE ONE-PERSON TALK TRACK</span>
+            <button class="copy-btn" onclick="copyFullScript()">COPY ENTIRE SCRIPT</button>
+          </div>
 
-        <!-- Step 3: AI Super-Skill Solution -->
-        <div class="script-step-box">
-          <span class="step-tag">STEP 3: THE AI SUPER-SKILL PITCH (30 SECONDS)</span>
-          <button class="copy-btn" onclick="copyText('pitch-text')">COPY</button>
-          <p class="script-text" id="pitch-text">
-            "We build local tire shops a turnkey AI website with a <strong>live interactive video avatar</strong> that greets visitors and a <strong>24/7 AI voice phone agent</strong> that answers calls, quotes tire sizes, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts."
-          </p>
-        </div>
-
-        <!-- Step 4: 5-Minute Preview Close -->
-        <div class="script-step-box" style="border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.08);">
-          <span class="step-tag" style="color: #a5b4fc;">STEP 4: LOW-FRICTION CLOSE FOR 5-MIN PREVIEW</span>
-          <button class="copy-btn" onclick="copyText('close-text')">COPY</button>
-          <p class="script-text" id="close-text">
-            "All I want to do is generate a 100% custom live preview with your logo, tire inventory lookups, and talking video avatar. Does tomorrow at 10:15 AM or 2:30 PM work for a quick 3-minute look?"
-          </p>
+          <div class="script-content-area" id="script-body">
+            <!-- Dynamically injected framework script paragraphs -->
+          </div>
         </div>
       </div>
 
@@ -319,7 +320,7 @@
             <p class="script-text" id="obj-script" style="font-size: 0.88rem;">
               "Having a website is like having a sign on your door; having an AI website with a live video host and 24/7 voice phone agent is like having your best salesperson working the front desk around the clock. When someone visits your site at 9 PM on Sunday, does your site answer questions and book them in?"
             </p>
-            <button class="copy-btn" style="top:auto; bottom:12px; right:12px;" onclick="copyText('obj-script')">COPY SCRIPT</button>
+            <button class="copy-btn" style="position:absolute; bottom:12px; right:12px;" onclick="copyText('obj-script')">COPY SCRIPT</button>
           </div>
         </div>
 
@@ -338,10 +339,10 @@
             <button class="battle-tab" data-bat="yelp">VS. YELP / ANGI</button>
           </div>
 
-          <div class="script-step-box" id="battle-display" style="min-height: 120px;">
-            <span class="step-tag" id="bat-tag">LANDMINE QUESTION:</span>
+          <div class="script-step-box" id="battle-display" style="min-height: 120px; background: rgba(0,0,0,0.3); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+            <span class="step-tag" id="bat-tag">VS. $5,000 TRADITIONAL AGENCIES:</span>
             <p class="script-text" id="bat-text" style="font-size: 0.86rem;">
-              "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, and bill $150/hr for simple edits. We launch in 48 hours for $299/mo flat with a talking video avatar and 24/7 voice receptionist included."
+              "Traditional agencies charge $5,000 upfront, take 8 weeks to build a static brochure, lock you into 12-month contracts, and bill $150/hr for simple edits. We launch in 48 hours for $299/mo flat with a talking video avatar and 24/7 voice receptionist included."
             </p>
           </div>
         </div>
@@ -370,11 +371,11 @@
         <!-- Direct Document Links -->
         <div class="quick-links-box">
           <span style="font-family: var(--font-headings); font-size: 0.72rem; color: var(--text-muted); display: block; margin-bottom: 4px;">ENABLEMENT SOURCE DOCS:</span>
-          <a href="sales-enablement/01-cold-call-script-and-talk-tracks.md" target="_blank">📄 Full Scripts</a>
+          <a href="sales-enablement/06-full-framework-cold-call-scripts.md" target="_blank">📄 5 Framework Scripts</a>
+          <a href="sales-enablement/01-cold-call-script-and-talk-tracks.md" target="_blank">📄 Cold Call Tracks</a>
           <a href="sales-enablement/02-objection-handling-bible.md" target="_blank">📄 Objection Bible</a>
           <a href="sales-enablement/03-competitor-battlecards.md" target="_blank">📄 Battlecards</a>
           <a href="sales-enablement/04-pitch-deck.md" target="_blank">📄 Pitch Deck</a>
-          <a href="sales-enablement/05-one-pager-leave-behind.md" target="_blank">📄 One-Pager</a>
         </div>
 
       </div>
@@ -383,52 +384,116 @@
   </div>
 
   <script>
-    // Pattern Interrupt Data
-    const patternData = {
-      shopper: {
-        tag: "STEP 1: THE MYSTERY SHOPPER DIAGNOSTIC (7 SECONDS)",
-        text: '"Hey [Owner Name], [My Name] here with LocalPulse AI. Real quick—I ran a 30-second test on your website and shop phone yesterday at 7:15 PM to see what happens when a customer needs an emergency quote after hours. It went to voicemail, so I tested your competitor down the street and they had live booking. Can I get 25 seconds to show you what we found?"'
+    // 5 Framework Script Database
+    const frameworkScripts = {
+      aida: {
+        title: "AIDA FRAMEWORK: COMPLETE ONE-PERSON TALK TRACK",
+        sections: [
+          {
+            tag: "1. ATTENTION (THE AFTER-HOURS SPEED TEST)",
+            text: '"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. Real quick—I ran a 30-second speed test on your website and shop phone yesterday at 7:15 PM to see what happens when a customer needs an emergency quote after hours. Your phone went to voicemail, so I tested your competitor down the street, and they had instant online booking. Can I get just 25 seconds to show you what we found?"'
+          },
+          {
+            tag: "2. INTEREST (THE LEAKY BUCKET DATA)",
+            text: '"Here’s the reality: over <strong>40% of local customers</strong> search and call after 6 PM or on weekends when you\'re closed or busy on the floor. When they hit voicemail, <strong>90% hang up and call the next listing</strong>. Most local shops are leaking <strong>10 to 15 high-paying jobs every single month</strong> simply because nobody can answer the phone 24/7."'
+          },
+          {
+            tag: "3. DESIRE (THE AI SUPER-SKILL SOLUTION)",
+            text: '"That’s exactly what we fix. We build local businesses a turnkey AI website with a <strong>live talking video avatar</strong> that greets visitors face-to-face, plus a <strong>24/7 AI voice phone agent</strong> that answers your shop phone, quotes prices, and books appointments directly into your calendar. We build the entire system in <strong>under 48 hours</strong> for a flat <strong>$299 a month</strong> with zero long-term contracts and a 30-day money-back guarantee."'
+          },
+          {
+            tag: "4. ACTION (THE 3-MINUTE PREVIEW CLOSE)",
+            text: '"Look <strong>[Owner Name]</strong>, I don\'t expect you to buy this over the phone right now. All I want to do is generate a <strong>100% custom live preview</strong> with your logo, your prices, and your talking AI video avatar so you can see it on your own phone. Does tomorrow morning at <strong>10:15 AM</strong> or <strong>2:30 PM</strong> work better for a quick 3-minute look?"'
+          }
+        ]
       },
-      voss: {
-        tag: "STEP 1: THE CHRIS VOSS REVERSE PSYCHOLOGY (7 SECONDS)",
-        text: '"Hey [Owner Name]—this is [My Name] with LocalPulse AI. I\'m guessing I\'m catching you at the absolute worst possible time today?... I figured! Give me 20 seconds to explain why your shop in [City] popped up on my screen, and if it doesn\'t make sense, tell me to jump off a cliff. Fair enough?"'
+      sixw: {
+        title: "THE 6 W's FRAMEWORK: DIRECT, CONCISE & LOGICAL",
+        sections: [
+          {
+            tag: "1. WHO & WHAT (THE IDENTITY & OFFER)",
+            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> here with LocalPulse AI. We specialize in building <strong>high-converting AI websites with live interactive video avatars and 24/7 voice phone receptionists</strong> specifically engineered for local service businesses."'
+          },
+          {
+            tag: "2. WHERE & WHEN (MARKET & 48-HOUR SPEED)",
+            text: '"We work right here in the <strong>[City / Metro Area]</strong> market with shops like yours, and we deliver completely customized, fully functioning websites live in <strong>under 48 hours</strong> with 100% done-for-you setup."'
+          },
+          {
+            tag: "3. WHY IT MATTERS (THE ACUTE CUSTOMER NEED)",
+            text: '"The reason I\'m reaching out to you today is that local customers searching for services want instant answers. When your shop is slammed or closed for the night, our AI assistant steps in to <strong>answer questions, quote prices, and book appointments 24/7</strong> so you never lose another paying customer to your competitors down the road."'
+          },
+          {
+            tag: "4. WHAT'S NEXT / CLOSE (60-SECOND MOBILE DEMO)",
+            text: '"It costs just <strong>$299 a month</strong> with no contracts. All I\'d like to do next is text you a <strong>private 60-second video demo</strong> showing your shop\'s actual name and talking AI avatar in action. What is the best cell number to text that over to?"'
+          }
+        ]
       },
-      honest: {
-        tag: "STEP 1: RADICAL TRANSPARENCY / 100% HONEST (7 SECONDS)",
-        text: '"Hey [Owner Name], I’m not gonna pretend this isn\'t a cold call. You can hang up right now if you want, or give me 25 seconds to explain how we just got a shop in [Nearby City] 22 booked bay appointments with a live talking AI video avatar and 24/7 phone receptionist. How\'s that sound?"'
+      pas: {
+        title: "PAS FRAMEWORK: PROBLEM ➔ AGITATE ➔ RELIEF",
+        sections: [
+          {
+            tag: "1. PROBLEM (THE CONSTANT PHONE INTERRUPTION)",
+            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse. Quick question for you: how many times a day are you or your techs right in the middle of a job with customers, and the phone rings off the hook with people asking basic price questions you don\'t have time to answer?"'
+          },
+          {
+            tag: "2. AGITATE (THE SILENT REVENUE BLEED)",
+            text: '"It\'s frustrating because every minute you spend wiping your hands to answer a $30 question is a minute not making money. And even worse—when you can\'t pick up and it goes to voicemail, that customer doesn\'t leave a message. They immediately click the next shop on Google Maps. That’s easily <strong>$300 to $500 in lost revenue on a single missed call</strong>, adding up to <strong>thousands of dollars in lost profit every single month</strong> while your shop overhead stays exactly the same."'
+          },
+          {
+            tag: "3. RELIEF & SOLUTION (THE AUTOMATED SHIELD)",
+            text: '"We take that entire headache off your plate forever. We install an <strong>AI Growth Engine</strong> for your shop: a custom website with a <strong>live interactive video avatar</strong> that answers questions online, plus an <strong>ultra-natural 24/7 AI voice phone agent</strong> that answers your calls, quotes your exact prices, and books repair bays on autopilot. You never touch code, you never miss a call, and it\'s just <strong>$299 a month</strong> with zero long-term commitments."'
+          },
+          {
+            tag: "4. CLOSE (3-MINUTE COMPUTER / PHONE WALKTHROUGH)",
+            text: '"I\'ve already started assembling a custom preview for <strong>[Business Name]</strong>. Are you by a computer or your phone tomorrow around <strong>10:30 AM</strong> so I can show you how it works in under 3 minutes?"'
+          }
+        ]
       },
-      antiagency: {
-        tag: "STEP 1: THE ANTI-AGENCY LIFE RAFT (7 SECONDS)",
-        text: '"Hey [Owner Name], [My Name] with LocalPulse. I promise I’m not calling to pitch you $5,000 agency retainers or scammy Yelp ads. We built a 24/7 AI voice phone agent that answers your shop calls while you\'re busy with customers so you don\'t lose jobs. Do you have 20 seconds to hear how it works?"'
-      }
-    };
-
-    // Niche Script Data
-    const nicheScripts = {
-      tires: {
-        hook: "When customers search for tire replacements or brake service in [City] after 6 PM or while your bays are busy, who currently answers the phone? Most shops lose 10-15 tire jobs a month right there.",
-        pitch: "We build local tire shops a turnkey AI website with a live interactive video avatar that greets visitors and a 24/7 AI voice phone agent that answers calls, quotes tire sizes, and books bays automatically. We launch it in 48 hours for $299/mo with no contracts.",
-        close: "All I want to do is generate a 100% custom live preview with your logo, tire inventory lookups, and talking video avatar. Does tomorrow at 10:15 AM or 2:30 PM work for a quick 3-minute look?"
+      fab: {
+        title: "FAB FRAMEWORK: FEATURE ➔ ADVANTAGE ➔ BENEFIT",
+        sections: [
+          {
+            tag: "1. DIRECT OPENER",
+            text: '"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse AI. I’ll keep this super direct—we build automated AI growth systems for local businesses, and I wanted to share three quick capabilities that are generating dozens of new bookings for shops in our area."'
+          },
+          {
+            tag: "2. FEATURE 1: 24/7 AI PHONE AGENT",
+            text: '"First, our <strong>24/7 Inbound AI Voice Receptionist</strong> picks up calls in under 2 seconds and answers with natural human conversation. The <strong>advantage</strong> is that it knows your exact service list, prices, and operating hours, which <strong>benefits you</strong> because you never lose after-hours callers or have to stop what you\'re doing in the shop just to answer price-shoppers."'
+          },
+          {
+            tag: "3. FEATURE 2: LIVE VIDEO AVATAR",
+            text: '"Second, our <strong>Interactive Live Video Avatar</strong> greets every website visitor face-to-face on their phone. The <strong>advantage</strong> is that it explains your current promotions and guides visitors directly into your booking calendar, which <strong>benefits you</strong> by delivering a <strong>300% higher conversion rate</strong> than ordinary static brochure websites."'
+          },
+          {
+            tag: "4. FEATURE 3: OUTBOUND LEAD MACHINE",
+            text: '"Third, our <strong>Unlimited Outbound Lead Machine</strong> pulls verified local corporate contacts and fleet accounts by radius. The <strong>advantage</strong> is continuous outbound pipeline, which <strong>benefits you</strong> by bringing in steady, high-margin commercial contracts without paying for expensive ads."'
+          },
+          {
+            tag: "5. OFFER & CLOSE",
+            text: '"Everything is packaged into a turnkey website that launches in <strong>48 hours for $299 a month</strong>, backed by a <strong>30-day money-back guarantee</strong>. Can I get 3 minutes on your calendar tomorrow at <strong>11:00 AM</strong> or <strong>2:00 PM</strong> to show you the live preview?"'
+          }
+        ]
       },
-      salon: {
-        hook: "How many times a day are your nail techs in the middle of a full set or pedicure and cannot pick up the phone to book an appointment? Clients hang up and call the salon down the street.",
-        pitch: "We build luxury AI salon websites with an interactive live video concierge and 24/7 voice booking that lets clients book chairs, view nail art, and get SMS reminders automatically. No upfront agency fees—just $299/mo.",
-        close: "Can I text you a 2-minute video preview with your salon's actual name and talking video stylist tomorrow at 11 AM?"
-      },
-      bakery: {
-        hook: "Love what you guys are doing with your fresh baked goods! Quick question: are you currently capturing corporate breakfast and office catering orders on autopilot from local businesses?",
-        pitch: "We install an AI website that lets local offices order 5-10 dozen custom boxes online, plus an outbound lead machine that pulls contact info for every corporate office within 10 miles. It's $299/mo, live in 48 hours.",
-        close: "Can I send you a quick preview of how corporate offices in [City] would order catering directly through your AI website?"
-      },
-      mechanic: {
-        hook: "How much time do you lose each day wiping grease off your hands just to answer the phone and give price estimates to tire-kickers? Every minute on the phone is a minute not turning wrenches.",
-        pitch: "We give mechanics a 24/7 AI Voice Phone Agent and interactive video website that diagnoses symptoms, gives price ranges, and books repair appointments directly into your calendar without you touching the phone. It's $299/month, no contract.",
-        close: "Are you open to seeing a 60-second walkthrough with your shop's services tomorrow at 10:30 AM?"
-      },
-      hvac: {
-        hook: "When an AC breaks on a Sunday afternoon in 90-degree heat, homeowners call 3 companies. Whoever answers first and confirms a technician dispatch wins the $1,500 job.",
-        pitch: "Our 24/7 AI Voice Dispatch Agent answers incoming emergency calls in under 2 seconds, qualifies the system issue, and books the technician visit into your scheduling software automatically. Turnkey in 48 hours for $299/mo.",
-        close: "Can I show you how our AI dispatch handles an inbound emergency call in real-time tomorrow at 9:00 AM?"
+      pastor: {
+        title: "PASTOR FRAMEWORK: PROBLEM ➔ STORY ➔ TRANSFORMATION ➔ OFFER",
+        sections: [
+          {
+            tag: "1. PROBLEM & AMPLIFY ($30K-$50K YEARLY LOSS)",
+            text: '"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. I know you\'re busy running the shop today, but I\'m calling because most local business owners we speak with are dealing with the same silent profit killer: they work 12-hour days, but because their website is a static brochure and nobody is answering the phone at night, they are quietly <strong>losing $30,000 to $50,000 a year in customer revenue</strong> to big chains and aggressive local competitors."'
+          },
+          {
+            tag: "2. STORY & SOLUTION (REAL NEIGHBORHOOD SHOP CASE)",
+            text: '"Just last month, we partnered with a local auto shop that was struggling with this exact issue—their bays were full during the day, but their missed-call log was stacked with lost tire and brake jobs. We deployed our <strong>turnkey AI website with an interactive video avatar and 24/7 voice receptionist in under 48 hours</strong>."'
+          },
+          {
+            tag: "3. TRANSFORMATION & OFFER (24 EXTRA JOBS & $6,800 PROFIT)",
+            text: '"In their first 30 days, their AI phone assistant <strong>captured 24 after-hours appointments</strong> that would have normally bounced, generating over <strong>$6,800 in new gross profit</strong>. We provide this entire system—custom website, live video avatar, 24/7 phone receptionist, and automated SEO content—for a flat <strong>$299 a month</strong>, month-to-month, backed by our <strong>30-day \'More Leads Or It\'s Free\' guarantee</strong>."'
+          },
+          {
+            tag: "4. RESPONSE / CLOSE (3-MINUTE SCREEN SHARE)",
+            text: '"All I\'d love to do is spend 3 minutes with you on a screen share to show you how <strong>[Business Name]\'s</strong> customized AI preview looks and how natural the voice assistant sounds. Do you have a quick window tomorrow morning around <strong>9:45 AM</strong> or in the afternoon at <strong>3:15 PM</strong>?"'
+          }
+        ]
       }
     };
 
@@ -476,36 +541,42 @@
       }
     };
 
-    // Pattern Interrupt Switching
-    document.querySelectorAll('.pattern-btn').forEach(btn => {
+    // Render Framework Script
+    let currentFramework = 'aida';
+    function renderScript(frameworkKey) {
+      const data = frameworkScripts[frameworkKey];
+      if (!data) return;
+      currentFramework = frameworkKey;
+      document.getElementById('script-heading-tag').textContent = data.title;
+      
+      const scriptBody = document.getElementById('script-body');
+      scriptBody.innerHTML = '';
+
+      data.sections.forEach((sec, idx) => {
+        const box = document.createElement('div');
+        box.className = 'script-para-box';
+        box.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span class="script-para-tag">${sec.tag}</span>
+            <button class="copy-btn" style="font-size:0.68rem; padding:2px 8px;" onclick="copySectionText(${idx})">COPY</button>
+          </div>
+          <p class="script-text" id="sec-text-${idx}">${sec.text}</p>
+        `;
+        scriptBody.appendChild(box);
+      });
+    }
+
+    // Framework Button Handlers
+    document.querySelectorAll('.framework-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.framework-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const pattern = btn.getAttribute('data-pattern');
-        const data = patternData[pattern];
-        if (data) {
-          document.getElementById('step1-tag').textContent = data.tag;
-          document.getElementById('opener-text').innerHTML = data.text;
-        }
+        const frame = btn.getAttribute('data-frame');
+        renderScript(frame);
       });
     });
 
-    // Niche Switching
-    document.querySelectorAll('.niche-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const niche = btn.getAttribute('data-niche');
-        const data = nicheScripts[niche];
-        if (data) {
-          document.getElementById('hook-text').innerHTML = data.hook;
-          document.getElementById('pitch-text').innerHTML = data.pitch;
-          document.getElementById('close-text').innerHTML = data.close;
-        }
-      });
-    });
-
-    // Objection Switching
+    // Objection Handlers
     document.querySelectorAll('.obj-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.obj-btn').forEach(b => b.classList.remove('active'));
@@ -519,7 +590,7 @@
       });
     });
 
-    // Battlecard Switching
+    // Battlecard Handlers
     document.querySelectorAll('.battle-tab').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.battle-tab').forEach(b => b.classList.remove('active'));
@@ -533,13 +604,33 @@
       });
     });
 
-    // Copy to Clipboard
+    // Copy Handlers
+    function copySectionText(idx) {
+      const el = document.getElementById(`sec-text-${idx}`);
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        alert('Copied section to clipboard!');
+      });
+    }
+
+    function copyFullScript() {
+      const data = frameworkScripts[currentFramework];
+      if (!data) return;
+      const fullText = data.sections.map(s => `${s.tag}\n${s.text.replace(/<[^>]*>?/gm, '')}`).join('\n\n');
+      navigator.clipboard.writeText(fullText).then(() => {
+        alert('Copied full script to clipboard!');
+      });
+    }
+
     function copyText(elementId) {
       const text = document.getElementById(elementId).innerText;
       navigator.clipboard.writeText(text).then(() => {
         alert('Copied to clipboard!');
       });
     }
+
+    // Initial render
+    renderScript('aida');
   </script>
 </body>
 </html>
