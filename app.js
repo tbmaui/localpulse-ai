@@ -237,6 +237,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Video Modal Control
+  const videoModal = document.getElementById('video-modal');
+  const heroWatchVideoBtn = document.getElementById('hero-watch-video-btn');
+  const videoModalCloseBtn = document.getElementById('video-modal-close-btn');
+
+  function openVideoModal() {
+    if (videoModal) {
+      videoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeVideoModal() {
+    if (videoModal) {
+      videoModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (heroWatchVideoBtn) heroWatchVideoBtn.addEventListener('click', openVideoModal);
+  if (videoModalCloseBtn) videoModalCloseBtn.addEventListener('click', closeVideoModal);
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeVideoModal();
+      }
+    });
+  }
+
   // Form submission handler
   if (onboardingForm) {
     onboardingForm.addEventListener('submit', (e) => {

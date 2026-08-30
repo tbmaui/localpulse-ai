@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocalPulse AI — Sales Playbook</title>
+<style>
+/* ============================================
+   LOCALPULSE AI SALES PLAYBOOK
+   Modern Editorial | Light | Minimal | Fast Scan
+   ============================================ */
+
+:root {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --text: #111111;
+  --text-secondary: #6b6b6b;
+  --text-muted: #999999;
+  --border: #e8e8e8;
+  --border-light: #f0f0f0;
+
+  /* Framework Accents — muted, modern */
+  --aida: #c0392b;
+  --aida-surface: #fdf6f5;
+  --w6: #2980b9;
+  --w6-surface: #f5f9fd;
+  --pas: #d35400;
+  --pas-surface: #fdf7f2;
+  --fab: #1e8449;
+  --fab-surface: #f4faf6;
+  --pastor: #7d3c98;
+  --pastor-surface: #f9f5fb;
+  --objection: #2c3e50;
+  --objection-surface: #f5f6f7;
+
+  /* Callouts */
+  --tip: #0d7377;
+  --tip-surface: #f0f9f9;
+  --warning: #b8860b;
+  --warning-surface: #fdf9ec;
+  --success: #1e7e34;
+  --success-surface: #f0f7f1;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 10.5pt;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  letter-spacing: -0.01em;
+}
+
+/* Page */
+.page {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 0.55in 0.75in;
+  background: white;
+  page-break-after: always;
+}
+
+.page:last-child { page-break-after: auto; }
+
+/* Typography */
+h1 {
+  font-size: 26pt;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+h2 {
+  font-size: 13pt;
+  font-weight: 650;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: 10pt;
+  font-weight: 650;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+p { margin-bottom: 10px; }
+
+/* Header */
+.header {
+  text-align: left;
+  padding: 0 0 18px;
+  margin-bottom: 22px;
+}
+
+.header .brand {
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.header .subtitle {
+  font-size: 10pt;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+.header .tagline {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 8pt;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Dot Matrix Background Pattern */
+.dot-matrix {
+  background-image: radial-gradient(circle, var(--border) 0.6px, transparent 0.6px);
+  background-size: 14px 14px;
+}
+
+/* Script Section */
+.script-section {
+  margin-bottom: 20px;
+  page-break-inside: avoid;
+}
+
+.script-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.script-number {
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.script-name {
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.script-acronym {
+  font-size: 8.5pt;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.script-desc {
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dotted var(--border);
+}
+
+/* Color assignments for meta */
+.aida .script-number, .aida .script-name { color: var(--aida); }
+.w6 .script-number, .w6 .script-name { color: var(--w6); }
+.pas .script-number, .pas .script-name { color: var(--pas); }
+.fab .script-number, .fab .script-name { color: var(--fab); }
+.pastor .script-number, .pastor .script-name { color: var(--pastor); }
+.objection .script-number, .objection .script-name { color: var(--objection); }
+
+/* Talk Track — modern minimal */
+.talk-track {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  position: relative;
+  page-break-inside: avoid;
+}
+
+/* Subtle top accent line instead of left border */
+.talk-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 18px;
+  right: 18px;
+  height: 1.5px;
+  border-radius: 1px;
+}
+
+.aida .talk-track::before { background: var(--aida); }
+.w6 .talk-track::before { background: var(--w6); }
+.pas .talk-track::before { background: var(--pas); }
+.fab .talk-track::before { background: var(--fab); }
+.pastor .talk-track::before { background: var(--pastor); }
+.objection .talk-track::before { background: var(--objection); }
+
+.talk-track .label {
+  font-size: 7.5pt;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+/* Colored dot instead of solid bar */
+.talk-track .label::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.aida .talk-track .label::before { background: var(--aida); }
+.w6 .talk-track .label::before { background: var(--w6); }
+.pas .talk-track .label::before { background: var(--pas); }
+.fab .talk-track .label::before { background: var(--fab); }
+.pastor .talk-track .label::before { background: var(--pastor); }
+.objection .talk-track .label::before { background: var(--objection); }
+
+.talk-track blockquote {
+  font-style: italic;
+  color: var(--text);
+  padding-left: 0;
+  margin: 0;
+  font-size: 10pt;
+  line-height: 1.6;
+  border: none;
+}
+
+.talk-track blockquote strong {
+  font-style: normal;
+  font-weight: 650;
+}
+
+/* Prospect Cue — minimal pill */
+.cue {
+  display: inline-block;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  margin: 6px 0 10px;
+  font-style: italic;
+}
+
+.cue strong {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Callout — clean modern */
+.callout {
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  position: relative;
+  page-break-inside: avoid;
+}
+
+.callout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.callout.tip { background: var(--tip-surface); }
+.callout.tip::before { background: var(--tip); }
+.callout.warning { background: var(--warning-surface); }
+.callout.warning::before { background: var(--warning); }
+.callout.success { background: var(--success-surface); }
+.callout.success::before { background: var(--success); }
+
+.callout-title {
+  font-size: 7.5pt;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.callout.tip .callout-title { color: var(--tip); }
+.callout.warning .callout-title { color: var(--warning); }
+.callout.success .callout-title { color: var(--success); }
+
+.callout p { font-size: 9.5pt; margin: 0; line-height: 1.6; }
+
+/* Table — minimal modern */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 14px 0;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+}
+
+thead th {
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  border-bottom: 1.5px solid var(--text);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+tr:last-child td { border-bottom: none; }
+
+/* Flashcard table */
+.flash-table td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+  width: 20%;
+  color: var(--text);
+}
+.flash-table td:nth-child(2) {
+  font-style: italic;
+  width: 42%;
+  color: var(--text-secondary);
+}
+.flash-table td:nth-child(3) {
+  font-size: 9pt;
+  color: var(--text-muted);
+}
+
+/* Overview grid cards */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.overview-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 14px 16px;
+  page-break-inside: avoid;
+  position: relative;
+}
+
+.overview-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.overview-card.aida::before { background: var(--aida); }
+.overview-card.w6::before { background: var(--w6); }
+.overview-card.pas::before { background: var(--pas); }
+.overview-card.fab::before { background: var(--fab); }
+.overview-card.pastor::before { background: var(--pastor); }
+.overview-card.objection::before { background: var(--objection); }
+
+.overview-card .card-title {
+  font-size: 10pt;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+
+.overview-card.aida .card-title { color: var(--aida); }
+.overview-card.w6 .card-title { color: var(--w6); }
+.overview-card.pas .card-title { color: var(--pas); }
+.overview-card.fab .card-title { color: var(--fab); }
+.overview-card.pastor .card-title { color: var(--pastor); }
+.overview-card.objection .card-title { color: var(--objection); }
+
+.overview-card .card-flow {
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.overview-card .card-desc {
+  font-size: 8pt;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Objection detail cards */
+.obj-detail {
+  margin-bottom: 18px;
+  page-break-inside: avoid;
+}
+
+.obj-detail .obj-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.obj-detail .obj-number {
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.obj-detail .obj-title-text {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--objection);
+  letter-spacing: -0.3px;
+}
+
+.obj-detail .obj-why {
+  font-size: 8.5pt;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 8px;
+  padding-left: 24px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+/* Footer block */
+.footer-block {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.footer-block .footer-line {
+  font-size: 8pt;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-block .footer-sub {
+  font-size: 7.5pt;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Print */
+@media print {
+  body { background: white; }
+  .page { padding: 0.5in 0.65in; }
+  .script-section { break-inside: avoid; }
+  .talk-track { break-inside: avoid; }
+  .obj-detail { break-inside: avoid; }
+  table { break-inside: avoid; }
+  .overview-card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER / OVERVIEW ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="brand">LocalPulse AI</div>
+    <h1>Sales Playbook</h1>
+    <div class="subtitle">Complete End-to-End Cold Call Scripts &amp; Objection Handling</div>
+    <div class="tagline">Print &middot; Scan &middot; Close</div>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-title">How to Use This Playbook</div>
+    <p>Each framework is color-coded for instant recognition. Talk tracks are boxed for quick scanning during calls. Objection flashcards are designed for 3-second response recall. Keep this within arm's reach on every dial session.</p>
+  </div>
+
+  <h2>Frameworks at a Glance</h2>
+  <div class="overview-grid">
+    <div class="overview-card aida">
+      <div class="card-title">AIDA Framework</div>
+      <div class="card-flow">Attention &rarr; Interest &rarr; Desire &rarr; Action</div>
+      <div class="card-desc">Fast-paced openers, high-energy reps, prospects who need crisp contrast with competitors.</div>
+    </div>
+    <div class="overview-card w6">
+      <div class="card-title">The 6 W's Framework</div>
+      <div class="card-flow">Who &rarr; What &rarr; Where &rarr; When &rarr; Why &rarr; What's Next</div>
+      <div class="card-desc">Direct, concise, no-nonsense owners who appreciate clear logic.</div>
+    </div>
+    <div class="overview-card pas">
+      <div class="card-title">PAS / PAR Framework</div>
+      <div class="card-flow">Problem &rarr; Agitate &rarr; Relief/Solution</div>
+      <div class="card-desc">Triggering recognition of an outdated website and lost customer opportunities.</div>
+    </div>
+    <div class="overview-card fab">
+      <div class="card-title">FAB Framework</div>
+      <div class="card-flow">Feature &rarr; Advantage &rarr; Benefit</div>
+      <div class="card-desc">Analytical owners who want direct facts, clear feature-to-ROI translation, no fluff.</div>
+    </div>
+    <div class="overview-card pastor">
+      <div class="card-title">PASTOR Framework</div>
+      <div class="card-flow">Problem &rarr; Amplify &rarr; Story &rarr; Transformation &rarr; Response</div>
+      <div class="card-desc">Consultative calls, skeptical prospects, and story-driven closes.</div>
+    </div>
+    <div class="overview-card objection">
+      <div class="card-title">Objection Bible</div>
+      <div class="card-flow">3-Second Reframe Matrix + Detailed Scripts</div>
+      <div class="card-desc">Every call. Acknowledge &rarr; Reframe with Value &rarr; Low-Friction Question.</div>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <div class="callout-title">Core Offer Anchor</div>
+    <p><strong>$299/mo</strong> = Turnkey modern website + built-in local SEO + hosting + SSL. Live in <strong>48 hours</strong>. Month-to-month, no contracts. AI Sales Engine add-ons (Phone Receptionist, Lead Machine, Content Machine) are modular upgrades.</p>
+  </div>
+</div>
+
+<!-- ==================== SCRIPT 1: AIDA ==================== -->
+<div class="page">
+  <div class="script-section aida">
+    <div class="script-meta">
+      <span class="script-number">Script 01</span>
+      <span class="script-name">AIDA Framework</span>
+      <span class="script-acronym">Attention &rarr; Interest &rarr; Desire &rarr; Action</span>
+    </div>
+    <div class="script-desc">Best for fast-paced openers, high-energy reps, and prospects who need a crisp contrast with competitors.</div>
+
+    <div class="talk-track">
+      <div class="label">Attention</div>
+      <blockquote>"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. Real quick&mdash;I was looking at your shop's Google presence in <strong>[City]</strong> yesterday, and while your reviews are great, your website is missing modern mobile conversion and local search ranking pages that your top competitors are using. Do you have 25 seconds to hear why I called your shop specifically?"</blockquote>
+    </div>
+
+    <div class="cue"><strong>Prospect Cue:</strong> "Sure, what is this?" / "Go ahead"</div>
+
+    <div class="talk-track">
+      <div class="label">Interest</div>
+      <blockquote>"Here's what's happening: over <strong>70% of local customers</strong> now search on their phones, and when a site is slow, outdated, or doesn't have instant booking, they bounce in under 5 seconds and call another shop. Most local business owners know their website needs an overhaul, but they don't want to waste <strong>$5,000 on a slow agency</strong> or spend <strong>40 hours fighting Wix templates</strong>."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Desire</div>
+      <blockquote>"We give local shops a complete, modern, high-performance website with <strong>built-in local SEO and lead capture</strong> for a flat <strong>$299 a month</strong>&mdash;live in under 48 hours with zero work from your team. And what makes it unique is our <strong>modular AI Sales Engine</strong>: you can plug in optional power-ons like a <strong>24/7 AI Voice Phone Receptionist</strong>, an <strong>outbound lead generator</strong>, or <strong>automated SEO content</strong> whenever you want to drive extra revenue."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Action / Close</div>
+      <blockquote>"I've already put together a <strong>100% custom live preview</strong> with your shop's branding and service menu so you can see how clean it looks on your phone. Does tomorrow morning at <strong>10:15 AM</strong> or <strong>2:30 PM</strong> work for a quick 3-minute look?"</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPT 2: 6 W's ==================== -->
+<div class="page">
+  <div class="script-section w6">
+    <div class="script-meta">
+      <span class="script-number">Script 02</span>
+      <span class="script-name">The 6 W's Framework</span>
+      <span class="script-acronym">Who &rarr; What &rarr; Where &rarr; When &rarr; Why &rarr; What's Next</span>
+    </div>
+    <div class="script-desc">Best for direct, concise, no-nonsense owners who appreciate clear logic.</div>
+
+    <div class="talk-track">
+      <div class="label">Who &amp; What</div>
+      <blockquote>"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> here with LocalPulse AI. We deliver <strong>turnkey, ultra-modern websites with built-in local SEO</strong> engineered specifically for local service businesses."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Where &amp; When</div>
+      <blockquote>"We work directly with shops right here in <strong>[City / Metro Area]</strong>, and we deliver your completely customized, high-converting website live in <strong>under 48 hours</strong> with 100% done-for-you setup."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Why It Matters &amp; The Sales Engine</div>
+      <blockquote>"The reason I'm reaching out is that traditional sites are just static brochures. We give you a modern web presence for <strong>$299 a month</strong>, and allow you to layer in an optional <strong>AI Sales Engine</strong>&mdash;like a 24/7 phone answering agent or continuous outbound lead lists&mdash;so your website actively captures paying jobs around the clock."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">What's Next / Close</div>
+      <blockquote>"No contracts, month-to-month. All I'd like to do next is text you a <strong>private preview link</strong> so you can see how your shop looks on mobile. What is the best cell number to send that over to?"</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPT 3: PAS ==================== -->
+<div class="page">
+  <div class="script-section pas">
+    <div class="script-meta">
+      <span class="script-number">Script 03</span>
+      <span class="script-name">PAS / PAR Framework</span>
+      <span class="script-acronym">Problem &rarr; Agitate &rarr; Relief/Solution</span>
+    </div>
+    <div class="script-desc">Best for triggering recognition of an outdated website and lost customer opportunities.</div>
+
+    <div class="talk-track">
+      <div class="label">Problem</div>
+      <blockquote>"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse. Quick question: when was the last time you looked at your shop's website on a smartphone alongside your top three local competitors?"</blockquote>
+    </div>
+
+    <div class="cue"><strong>Prospect Cue:</strong> "It's been a while" / "Probably a few years"</div>
+
+    <div class="talk-track">
+      <div class="label">Agitate</div>
+      <blockquote>"Most local owners haven't touched their site in years because agencies charge <strong>$5,000 upfront</strong> and take 2 months to do anything. But in the meantime, outdated design, slow load speeds, and missing local SEO pages are quietly costing you <strong>dozens of high-value customer calls every month</strong> because modern mobile users simply tap the shop that looks the most professional."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Relief / Solution</div>
+      <blockquote>"We eliminate that entire headache. We build you an <strong>ultra-modern, lightning-fast website with built-in local SEO and high-converting lead forms</strong> for just <strong>$299 a month</strong>, live in 48 hours with zero effort from you. Plus, you can upgrade it into a full <strong>AI Sales Engine</strong> with modular add-ons like a <strong>24/7 AI phone receptionist</strong> or <strong>automated local content machine</strong> whenever you're ready."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Close</div>
+      <blockquote>"I have your new shop preview ready to review. Do you have 3 minutes tomorrow around <strong>10:30 AM</strong> or <strong>2:00 PM</strong> to check it out on your phone?"</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPT 4: FAB ==================== -->
+<div class="page">
+  <div class="script-section fab">
+    <div class="script-meta">
+      <span class="script-number">Script 04</span>
+      <span class="script-name">FAB Framework</span>
+      <span class="script-acronym">Feature &rarr; Advantage &rarr; Benefit</span>
+    </div>
+    <div class="script-desc">Best for analytical owners who want direct facts, clear feature-to-ROI translation, and no fluff.</div>
+
+    <div class="talk-track">
+      <div class="label">Opener</div>
+      <blockquote>"Hey <strong>[Owner Name]</strong>, <strong>[My Name]</strong> with LocalPulse AI. I'll keep this super direct&mdash;we build high-performance websites and modular AI sales engines for local businesses, and I wanted to share three quick advantages our clients are seeing."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Core Feature: Modern Website &amp; Local SEO</div>
+      <blockquote>"First, our <strong>Core Turnkey Website</strong> gives your shop an ultra-modern, high-speed web presence with <strong>built-in local SEO and schema markup</strong>. The <strong>advantage</strong> is that you instantly look superior to every local competitor on Google, which <strong>benefits you</strong> by converting more visitors into phone calls and scheduled visits without paying $5k upfront."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Modular Add-On: 24/7 AI Phone Receptionist</div>
+      <blockquote>"Second, you can optionally plug in our <strong>24/7 AI Voice Phone Receptionist</strong>. The <strong>advantage</strong> is that it answers inbound calls in natural voice 24/7 using your exact price sheet, which <strong>benefits you</strong> because you never miss high-value after-hours callers when the shop is closed."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Modular Add-On: Outbound Lead &amp; Content Engine</div>
+      <blockquote>"Third, you can add our <strong>Unlimited Local Lead Machine and Automated SEO Publisher</strong>. The <strong>advantage</strong> is continuous local B2B lead scraping and weekly Google updates, which <strong>benefits you</strong> with a steady flow of high-margin corporate and commercial accounts."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Offer &amp; Close</div>
+      <blockquote>"The core website is just <strong>$299 a month</strong>, month-to-month, live in <strong>48 hours</strong>. Can I get 3 minutes on your calendar tomorrow at <strong>11:00 AM</strong> or <strong>2:00 PM</strong> to show you the live preview?"</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPT 5: PASTOR ==================== -->
+<div class="page">
+  <div class="script-section pastor">
+    <div class="script-meta">
+      <span class="script-number">Script 05</span>
+      <span class="script-name">PASTOR Framework</span>
+      <span class="script-acronym">Problem &rarr; Amplify &rarr; Story &rarr; Transformation &rarr; Response</span>
+    </div>
+    <div class="script-desc">Best for consultative calls, skeptical prospects, and story-driven closes.</div>
+
+    <div class="talk-track">
+      <div class="label">Problem &amp; Amplify</div>
+      <blockquote>"Hey <strong>[Owner Name]</strong>, this is <strong>[My Name]</strong> with LocalPulse AI. I know you're busy running the shop today, but I'm calling because most local business owners we speak with are stuck between two bad options: keep an outdated, embarrassing website that loses customers, or spend $5,000 on a web agency that takes 8 weeks and doesn't drive new business."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Story &amp; Solution</div>
+      <blockquote>"Just last month, we worked with a local service shop in a neighboring town that had an old 2018 website that generated zero leads. In <strong>under 48 hours</strong>, we replaced it with a modern, high-speed website with built-in local SEO for <strong>$299 a month</strong>, and they added our <strong>24/7 AI voice phone agent</strong> as a modular add-on."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Transformation &amp; Offer</div>
+      <blockquote>"Within 30 days, their new site outranked their local competitors on Google Maps, and their AI phone assistant captured <strong>22 after-hours bookings</strong>, bringing in over <strong>$5,400 in new customer revenue</strong>. You get the complete modern website for <strong>$299 a month</strong>, with the option to customize your own AI Sales Engine with phone, lead, and content add-ons at will."</blockquote>
+    </div>
+
+    <div class="talk-track">
+      <div class="label">Response / Close</div>
+      <blockquote>"All I'd love to do is spend 3 minutes with you on a screen share to show you how <strong>[Business Name]'s</strong> customized preview looks. Do you have a quick window tomorrow morning around <strong>9:45 AM</strong> or in the afternoon at <strong>3:15 PM</strong>?"</blockquote>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Quick Decision Forks &amp; Objection Bridges</h2>
+  <table>
+    <thead>
+      <tr><th>Prospect Response</th><th>Script Bridge</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>"I already have a website."</strong></td>
+        <td>"Totally understand! But does your current site rank on local Google search, look modern on smartphones, and offer optional 24/7 AI phone answering? That's why owners switch&mdash;for $299/mo, we upgrade your entire digital footprint into a revenue engine."</td>
+      </tr>
+      <tr>
+        <td><strong>"Is the AI Phone Agent included?"</strong></td>
+        <td>"The $299/mo plan gives you the entire turnkey modern website, hosting, and local SEO. The 24/7 AI Phone Agent, Lead Machine, and Video Avatar are optional modular add-ons you can plug in anytime to create your custom AI Sales Engine!"</td>
+      </tr>
+      <tr>
+        <td><strong>"Just send me an email."</strong></td>
+        <td>"I can definitely send an email, but I can also text a 45-second video preview of your shop's new design right to your phone so you can see it in 30 seconds. What is your cell number?"</td>
+      </tr>
+      <tr>
+        <td><strong>"I don't have time for this."</strong></td>
+        <td>"That is why owners love it&mdash;it's 100% done-for-you. You don't write code or design anything. We build it, launch in 48 hours, and handle all updates."</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== OBJECTION BIBLE ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="brand">LocalPulse AI</div>
+    <h1>Objection Handling Bible</h1>
+    <div class="subtitle">For Outbound Reps</div>
+    <div class="tagline">Acknowledge &rarr; Reframe &rarr; Ask</div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Golden Rule</div>
+    <p>Never argue. Acknowledge &rarr; Reframe with Value Equation &rarr; Ask a Low-Friction Question.</p>
+  </div>
+
+  <h2>3-Second Response Flashcards</h2>
+  <table class="flash-table">
+    <thead>
+      <tr><th>Objection</th><th>3-Second Core Reframe</th><th>Transition Question</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"We already have a website."</td>
+        <td>"Having a website is like having a storefront; having an AI website with a live video host and 24/7 phone agent is like having your best salesperson working the front desk 24/7."</td>
+        <td>"When someone visits your site at 9 PM on a Sunday, does your site capture their phone number and book them into a bay?"</td>
+      </tr>
+      <tr>
+        <td>"I don't have time for this."</td>
+        <td>"That is exactly why shops hire us. It's 100% Done-For-You. You don't write code, design pages, or configure AI. We build it in 48 hours."</td>
+        <td>"If all you had to do was review a 2-minute video preview on your phone, would that be worth seeing?"</td>
+      </tr>
+      <tr>
+        <td>"$299/mo is too expensive."</td>
+        <td>"At an average ticket size of $200&ndash;$400, capturing just one single customer a month that would have called your competitor pays for the entire system."</td>
+        <td>"How many phone calls do you think go unanswered when the bays/chairs are busy each week?"</td>
+      </tr>
+      <tr>
+        <td>"Just send me an email."</td>
+        <td>"I'd love to, but our clients tell us an email just looks like generic marketing fluff. I actually want to show you your shop's actual name with a live talking AI video avatar."</td>
+        <td>"What's your cell? I can text you a 30-second video demo right now so you can see it on your own time."</td>
+      </tr>
+      <tr>
+        <td>"We get all our business from word of mouth."</td>
+        <td>"Word of mouth is the best! But when someone recommends your shop, the first thing that new person does is Google your name on their phone. If your site looks dated or has no instant booking, 30% of those referrals go elsewhere."</td>
+        <td>"Would you want to see how we turn those referrals into guaranteed booked appointments?"</td>
+      </tr>
+      <tr>
+        <td>"I don't trust AI."</td>
+        <td>"We don't let AI run wild. It's strictly programmed on your exact menu, prices, warranty, and hours. If someone asks a weird question, it immediately texts your phone."</td>
+        <td>"Would you want to test calling our AI phone agent right now for 30 seconds to hear how natural it sounds?"</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== DETAILED OBJECTION SCRIPTS ==================== -->
+<div class="page">
+  <h2>Detailed Objection Scripts</h2>
+
+  <div class="obj-detail">
+    <div class="obj-header">
+      <span class="obj-number">01</span>
+      <span class="obj-title-text">"We already have a website."</span>
+    </div>
+    <div class="obj-why">Why they say it: They think you're selling a static brochure website built in 2018.</div>
+    <div class="talk-track objection">
+      <blockquote>"I totally understand <strong>[Owner Name]</strong>, and I actually saw your current website. It has your address and phone number, which is great. But here's the difference: traditional websites are passive brochures. Our AI websites are active revenue engines&mdash;they come with a live talking video avatar that greets customers and a 24/7 AI voice phone agent that answers your calls when you're busy in the back. If someone visits your site after hours, can they book an appointment and get instant pricing right now?"</blockquote>
+    </div>
+  </div>
+
+  <div class="obj-detail">
+    <div class="obj-header">
+      <span class="obj-number">02</span>
+      <span class="obj-title-text">"Send me an email / I'm busy."</span>
+    </div>
+    <div class="obj-why">Why they say it: It's the standard brush-off to get off the phone.</div>
+    <div class="talk-track objection">
+      <blockquote>"Fair enough, I know you're slammed right now. I can definitely send an email, but frankly, 90% of emails end up in spam. How about this: I'll text a 30-second screen recording of your shop's custom AI preview to your cell. What's the best mobile number to send that to?"</blockquote>
+    </div>
+  </div>
+
+  <div class="obj-detail">
+    <div class="obj-header">
+      <span class="obj-number">03</span>
+      <span class="obj-title-text">"We tried digital marketing before and got burned."</span>
+    </div>
+    <div class="obj-why">Why they say it: They paid an agency $5,000 upfront or $1,500/mo retainer with zero tangible leads.</div>
+    <div class="talk-track objection">
+      <blockquote>"I hear that every single day. Traditional agencies charge $5,000 upfront, lock you into a 6-month contract, and take 8 weeks to build a site that doesn't bring in a single lead. We did the exact opposite: no long-term contracts, month-to-month for $299, live in 48 hours, and backed by a 30-day 'more leads or it's free' guarantee. If it doesn't bring you customers, you cancel and pay nothing."</blockquote>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="obj-detail">
+    <div class="obj-header">
+      <span class="obj-number">04</span>
+      <span class="obj-title-text">"I need to talk to my business partner / spouse."</span>
+    </div>
+    <div class="obj-why">Why they say it: Valid objection or delaying tactic.</div>
+    <div class="talk-track objection">
+      <blockquote>"That makes total sense. Rather than trying to explain an AI video avatar and 24/7 voice receptionist over dinner, let me build the custom live preview for your shop first. That way, you both can pull it up on your phones and test it together. Does tomorrow afternoon or Thursday morning work to send that over?"</blockquote>
+    </div>
+  </div>
+
+  <div class="obj-detail">
+    <div class="obj-header">
+      <span class="obj-number">05</span>
+      <span class="obj-title-text">"Can I just buy the website without the AI?"</span>
+    </div>
+    <div class="talk-track objection">
+      <blockquote>"Our core $299/mo plan includes the entire turnkey custom website, hosting, SSL, and mobile optimization. The AI add-ons like the Video Avatar, Phone Receptionist, and Outbound Lead Machine are completely modular. You can start with just the core site and toggle on the AI features whenever you're ready!"</blockquote>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="callout success">
+    <div class="callout-title">Remember the Value Equation</div>
+    <p><strong>Core Offer:</strong> $299/mo = Modern website + local SEO + hosting + SSL + 48-hour delivery + month-to-month.</p>
+    <p style="margin-top:6px;"><strong>AI Sales Engine Add-ons:</strong> 24/7 Phone Receptionist | Outbound Lead Machine | Automated SEO Content | Interactive Forms. Plug in anytime.</p>
+  </div>
+
+  <div class="footer-block">
+    <div class="footer-line">LocalPulse AI &middot; Sales Playbook &middot; 2026</div>
+    <div class="footer-sub">Print-friendly &middot; Scan-optimized &middot; Rep-ready</div>
+  </div>
+</div>
+
+</body>
+</html>
