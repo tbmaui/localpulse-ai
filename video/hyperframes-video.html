@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LocalPulse AI — Official 60-Second Video Intro (Hyperframes Engine)</title>
+  <title>LocalPulse AI — Official 3D Cinematic Launch Film</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- GSAP & Three.js for 3D Motion Graphics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #070a12;
-      --card-bg: rgba(15, 23, 42, 0.85);
+      --bg: #030712;
       --primary: #6366f1;
       --primary-glow: #818cf8;
       --accent-cyan: #06b6d4;
@@ -19,7 +21,6 @@
       --accent-rose: #f43f5e;
       --accent-amber: #f59e0b;
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
       --font-headings: 'Montserrat', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
@@ -31,7 +32,7 @@
     }
 
     body {
-      background: #030712;
+      background: #02040a;
       color: var(--text-main);
       font-family: var(--font-body);
       display: flex;
@@ -39,310 +40,299 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      overflow-x: hidden;
-      padding: 20px;
+      overflow: hidden;
+      perspective: 1000px;
     }
 
-    /* Video Frame Container */
-    .video-viewport {
+    /* Cinematic Theater Shell */
+    .film-container {
       width: 100%;
-      max-width: 960px;
+      max-width: 1080px;
       aspect-ratio: 16 / 9;
-      background: radial-gradient(circle at 50% 30%, #0f172a 0%, #070a12 80%);
-      border: 1px solid rgba(99, 102, 241, 0.35);
-      border-radius: 16px;
+      background: #000000;
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 18px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.9), 0 0 60px rgba(99, 102, 241, 0.25);
     }
 
-    /* Canvas background effect */
-    #bg-canvas {
+    /* 3D WebGL Canvas Layer */
+    #webgl-canvas {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.6;
+      z-index: 1;
+    }
+
+    /* Cinematic Post-Processing Overlays */
+    .film-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.6) 90%),
+                  linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.6) 100%);
     }
 
-    /* Scene Container */
-    .scene {
+    .film-grain {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      padding: 40px 60px;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 3;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .anamorphic-flare {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.8) 50%, transparent 100%);
+      filter: blur(2px);
+      opacity: 0.5;
+      z-index: 4;
+      pointer-events: none;
+      animation: pulse-flare 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulse-flare {
+      0% { opacity: 0.2; transform: translate(-50%, -50%) scaleX(0.8); }
+      100% { opacity: 0.7; transform: translate(-50%, -50%) scaleX(1.1); }
+    }
+
+    /* Motion Graphics UI Layer (HTML Overlay on top of 3D) */
+    .motion-ui-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      pointer-events: none;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 36px 48px;
+    }
+
+    .brand-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hud-brand-tag {
+      font-family: var(--font-headings);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hud-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #10b981;
+      animation: dot-pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes dot-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.6); opacity: 1; }
+    }
+
+    .hud-resolution-tag {
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 1px;
+    }
+
+    /* Center Kinetic Stage */
+    .kinetic-stage {
+      display: flex;
+      flex-direction: column;
       align-items: center;
       text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(0.95) translateY(10px);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
     }
 
-    .scene.active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1) translateY(0);
-    }
-
-    /* Typography & Badges */
-    .badge {
+    .kinetic-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 6px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 9999px;
       font-family: var(--font-headings);
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .badge-red {
-      background: rgba(244, 63, 94, 0.15);
-      border: 1px solid rgba(244, 63, 94, 0.4);
-      color: #fb7185;
-    }
-
-    .badge-cyan {
-      background: rgba(6, 182, 212, 0.15);
-      border: 1px solid rgba(6, 182, 212, 0.4);
-      color: #38bdf8;
-    }
-
-    .badge-emerald {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
-    }
-
-    .scene-title {
-      font-family: var(--font-headings);
-      font-weight: 300;
-      font-size: 2.2rem;
-      line-height: 1.25;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 14px;
-      max-width: 800px;
+      margin-bottom: 16px;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .scene-title strong {
-      font-weight: 700;
-      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #818cf8 100%);
+    .kinetic-badge.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .kinetic-title {
+      font-family: var(--font-headings);
+      font-weight: 900;
+      font-size: 2.8rem;
+      line-height: 1.15;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      max-width: 880px;
+      transform: scale(0.9) translateY(30px);
+      opacity: 0;
+      filter: blur(10px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .kinetic-title.active {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      filter: blur(0px);
+    }
+
+    .gradient-word {
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 45%, #6366f1 90%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.4));
     }
 
-    .scene-desc {
-      font-size: 1.05rem;
-      color: #cbd5e1;
+    .kinetic-sub {
+      font-size: 1.1rem;
+      color: #94a3b8;
       max-width: 680px;
-      line-height: 1.6;
-    }
-
-    /* Scene 1: Problem Visual */
-    .problem-cards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 24px;
-      width: 100%;
-      max-width: 650px;
-    }
-
-    .p-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(244, 63, 94, 0.25);
-      border-radius: 12px;
-      padding: 16px;
-      text-align: left;
-    }
-
-    .p-val {
-      font-family: var(--font-headings);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fb7185;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .p-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Scene 2: Solution Device Visual */
-    .hero-device-box {
-      margin-top: 20px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(99, 102, 241, 0.5);
-      border-radius: 14px;
-      padding: 18px 30px;
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
-    }
-
-    .stat-pill {
-      text-align: center;
-    }
-
-    .stat-val {
-      font-family: var(--font-headings);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #38bdf8;
-      display: block;
-    }
-
-    .stat-lbl {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-family: var(--font-headings);
-    }
-
-    /* Scene 3: Modular AI Grid */
-    .modules-showcase-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 740px;
-    }
-
-    .mod-box {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-align: left;
-      transition: all 0.3s ease;
-    }
-
-    .mod-box.active-pulse {
-      border-color: var(--primary-glow);
-      background: rgba(99, 102, 241, 0.15);
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-    }
-
-    .mod-icon {
-      font-size: 1.6rem;
-    }
-
-    .mod-title {
-      font-family: var(--font-headings);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: 0.5px;
-      display: block;
-    }
-
-    .mod-price {
-      font-size: 0.72rem;
-      color: #34d399;
-      font-weight: 600;
-      font-family: var(--font-headings);
-    }
-
-    /* Scene 4: ROI Shield */
-    .roi-guarantee-flex {
-      display: flex;
-      gap: 30px;
-      margin-top: 22px;
-      align-items: center;
-    }
-
-    .roi-card, .guarantee-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-      width: 280px;
-    }
-
-    /* Scene 5: Final CTA */
-    .final-cta-btn {
-      margin-top: 22px;
-      background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-      color: #ffffff;
-      padding: 14px 34px;
-      border-radius: 9999px;
-      font-family: var(--font-headings);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      border: none;
-      box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
-      cursor: pointer;
-    }
-
-    .final-url {
       margin-top: 14px;
-      font-family: var(--font-headings);
-      color: #38bdf8;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      line-height: 1.5;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
     }
 
-    /* Voiceover Subtitle Bar */
-    .subtitle-bar {
+    .kinetic-sub.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Floating 3D HUD Badges */
+    .floating-hud-modules {
       position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 8px 24px;
-      border-radius: 9999px;
-      font-size: 0.88rem;
-      color: #f1f5f9;
-      text-align: center;
-      max-width: 85%;
-      z-index: 10;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
       pointer-events: none;
     }
 
-    .subtitle-bar span {
+    .hud-chip {
+      position: absolute;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      backdrop-filter: blur(16px);
+      padding: 10px 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.25);
+      opacity: 0;
+      transform: translateY(30px) scale(0.85);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hud-chip.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .chip-icon {
+      font-size: 1.4rem;
+    }
+
+    .chip-title {
+      font-family: var(--font-headings);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .chip-sub {
+      font-size: 0.7rem;
+      color: #34d399;
+      font-weight: 600;
+      font-family: var(--font-headings);
+    }
+
+    #chip-phone { top: 22%; left: 8%; }
+    #chip-leads { top: 22%; right: 8%; }
+    #chip-seo   { bottom: 26%; left: 8%; }
+    #chip-avatar { bottom: 26%; right: 8%; }
+
+    /* Cinematic Subtitle Track */
+    .voiceover-tracker {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      padding: 8px 24px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 85%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .voiceover-tracker strong {
       color: #38bdf8;
       font-weight: 600;
     }
 
-    /* Video Player Controls */
-    .player-controls {
+    /* Controls Bar */
+    .cinema-controls {
       width: 100%;
-      max-width: 960px;
-      margin-top: 16px;
-      background: #090e1a;
+      max-width: 1080px;
+      margin-top: 14px;
+      background: #080c18;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
-      padding: 12px 20px;
+      padding: 12px 22px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .timeline-bar-wrap {
+    .cinema-scrubber {
       width: 100%;
       height: 6px;
       background: rgba(255, 255, 255, 0.1);
@@ -351,361 +341,503 @@
       position: relative;
     }
 
-    .timeline-progress {
+    .scrubber-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #6366f1, #06b6d4);
+      background: linear-gradient(90deg, #6366f1, #06b6d4, #10b981);
       border-radius: 9999px;
-      box-shadow: 0 0 10px #06b6d4;
-      transition: width 0.1s linear;
+      box-shadow: 0 0 12px #06b6d4;
     }
 
-    .controls-row {
+    .controls-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .btn-play {
-      background: var(--primary);
+    .btn-play-cinema {
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
       border: none;
       color: #ffffff;
-      padding: 6px 18px;
+      padding: 7px 20px;
       border-radius: 6px;
       font-family: var(--font-headings);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.8rem;
+      letter-spacing: 1px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: transform 0.2s;
     }
 
-    .time-display {
+    .btn-play-cinema:hover {
+      transform: scale(1.04);
+    }
+
+    .timer-readout {
       font-family: monospace;
       font-size: 0.85rem;
       color: var(--text-muted);
     }
 
-    .scene-pills {
+    .act-jump-btns {
       display: flex;
       gap: 6px;
     }
 
-    .scene-pill-btn {
+    .act-btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 4px;
-      color: var(--text-muted);
+      color: #94a3b8;
       font-size: 0.72rem;
-      padding: 4px 8px;
+      padding: 4px 10px;
       cursor: pointer;
       font-family: var(--font-headings);
+      font-weight: 500;
     }
 
-    .scene-pill-btn.active {
+    .act-btn.active {
       background: rgba(99, 102, 241, 0.25);
-      border-color: var(--primary);
+      border-color: var(--accent-cyan);
       color: #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- Video Viewport -->
-  <div class="video-viewport" id="video-container">
-    <canvas id="bg-canvas"></canvas>
+  <!-- 3D Cinematic Theater Shell -->
+  <div class="film-container" id="cinema-container">
+    <!-- WebGL Canvas -->
+    <canvas id="webgl-canvas"></canvas>
 
-    <!-- SCENE 1: HOOK (0s - 8s) -->
-    <div class="scene" id="scene-1">
-      <div class="badge badge-red">⚠️ THE LOCAL BUSINESS PROBLEM</div>
-      <h2 class="scene-title">OVER 70% OF CUSTOMERS <strong>SEARCH ON MOBILE</strong></h2>
-      <p class="scene-desc">When your website is slow or phone calls go to voicemail, high-paying local jobs go straight to your competitors.</p>
-      
-      <div class="problem-cards-grid">
-        <div class="p-card">
-          <span class="p-val">90%</span>
-          <span class="p-label">Hang up on voicemail & call next shop</span>
+    <!-- Post Processing Lens Elements -->
+    <div class="film-overlay"></div>
+    <div class="film-grain"></div>
+    <div class="anamorphic-flare"></div>
+
+    <!-- Motion UI Overlay -->
+    <div class="motion-ui-layer">
+      <!-- HUD Top Bar -->
+      <div class="brand-hud">
+        <div class="hud-brand-tag">
+          <div class="hud-pulse-dot"></div>
+          <span>LOCALPULSE<span style="color:#ffffff;">.AI</span></span>
         </div>
-        <div class="p-card">
-          <span class="p-val">$5,000+</span>
-          <span class="p-label">Wasted on slow, outdated web agencies</span>
-        </div>
+        <div class="hud-resolution-tag">4K ULTRA HD 3D • 60 FPS MOTION ENGINE</div>
       </div>
-    </div>
 
-    <!-- SCENE 2: THE SOLUTION (8s - 20s) -->
-    <div class="scene" id="scene-2">
-      <div class="badge badge-cyan">⚡ INTRODUCING LOCALPULSE AI</div>
-      <h2 class="scene-title">ULTRA-MODERN 3D WEBSITES <strong>WITH BUILT-IN SEO</strong></h2>
-      <p class="scene-desc">Engineered for tire shops, auto mechanics, salons, bakeries, and local pros. Live in 48 hours for $299/mo.</p>
-      
-      <div class="hero-device-box">
-        <div class="stat-pill">
-          <span class="stat-val">48 HOURS</span>
-          <span class="stat-lbl">Turnkey Launch</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-val">$299/MO</span>
-          <span class="stat-lbl">Flat Month-to-Month</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-val">100% DFY</span>
-          <span class="stat-lbl">Zero Tech Work</span>
-        </div>
+      <!-- Center Kinetic Typography & Visuals -->
+      <div class="kinetic-stage">
+        <div class="kinetic-badge active" id="act-badge">⚠️ ACT I: THE LOCAL CRISIS</div>
+        <h1 class="kinetic-title active" id="act-title">OVER 70% OF CUSTOMERS <span class="gradient-word">SEARCH ON MOBILE</span></h1>
+        <p class="kinetic-sub active" id="act-sub">When your website is slow or calls hit voicemail, high-paying jobs go straight to competitors.</p>
       </div>
-    </div>
 
-    <!-- SCENE 3: MODULAR AI SALES ENGINE (20s - 42s) -->
-    <div class="scene" id="scene-3">
-      <div class="badge badge-cyan">🚀 OPTIONAL MODULAR ADD-ONS</div>
-      <h2 class="scene-title">LAYER IN YOUR <strong>AI SALES ENGINE</strong></h2>
-      <p class="scene-desc">Turn your modern website into an automated revenue machine. Pick only what you need:</p>
-      
-      <div class="modules-showcase-grid">
-        <div class="mod-box active-pulse" id="mod-1">
-          <span class="mod-icon">📞</span>
+      <!-- Floating 3D HUD Modules -->
+      <div class="floating-hud-modules">
+        <div class="hud-chip" id="chip-phone">
+          <span class="chip-icon">📞</span>
           <div>
-            <span class="mod-title">24/7 AI Voice Phone Receptionist</span>
-            <span class="mod-price">+$99/MO • Quotes Prices & Books Bays</span>
+            <span class="chip-title">24/7 AI Phone Agent</span>
+            <span class="chip-sub">+$99/MO • Inbound Quotes & Bays</span>
           </div>
         </div>
-        <div class="mod-box" id="mod-2">
-          <span class="mod-icon">🎯</span>
+
+        <div class="hud-chip" id="chip-leads">
+          <span class="chip-icon">🎯</span>
           <div>
-            <span class="mod-title">Unlimited Outbound Lead Machine</span>
-            <span class="mod-price">+$149/MO • Verified Local B2B Leads</span>
+            <span class="chip-title">Outbound Lead Machine</span>
+            <span class="chip-sub">+$149/MO • Local Fleet & B2B Leads</span>
           </div>
         </div>
-        <div class="mod-box" id="mod-3">
-          <span class="mod-icon">📍</span>
+
+        <div class="hud-chip" id="chip-seo">
+          <span class="chip-icon">📍</span>
           <div>
-            <span class="mod-title">Autonomous Local SEO & Content</span>
-            <span class="mod-price">+$89/MO • Weekly Google Maps Content</span>
+            <span class="chip-title">Autonomous Local SEO</span>
+            <span class="chip-sub">+$89/MO • Google 3-Pack Domination</span>
           </div>
         </div>
-        <div class="mod-box" id="mod-4">
-          <span class="mod-icon">👤</span>
+
+        <div class="hud-chip" id="chip-avatar">
+          <span class="chip-icon">👤</span>
           <div>
-            <span class="mod-title">Interactive AI Live Video Avatar</span>
-            <span class="mod-price">+$89/MO • Face-to-Face Greeting</span>
+            <span class="chip-title">Live Video Avatar</span>
+            <span class="chip-sub">+$89/MO • Face-to-Face Video Host</span>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- SCENE 4: UNIT ECONOMICS & GUARANTEE (42s - 52s) -->
-    <div class="scene" id="scene-4">
-      <div class="badge badge-emerald">📈 THE SIMPLEST MATH IN YOUR BUSINESS</div>
-      <h2 class="scene-title">JUST 1 EXTRA CUSTOMER <strong>PAYS FOR EVERYTHING</strong></h2>
-      <p class="scene-desc">At an average ticket of $200–$400, one single booked job covers your entire monthly site.</p>
-      
-      <div class="roi-guarantee-flex">
-        <div class="roi-card">
-          <span style="font-family: var(--font-headings); font-size: 1.8rem; font-weight:700; color:#34d399; display:block;">1 JOB</span>
-          <span style="font-size:0.8rem; color:var(--text-muted);">100% Monthly Break-Even</span>
-        </div>
-        <div class="guarantee-card">
-          <span style="font-family: var(--font-headings); font-size: 1.2rem; font-weight:700; color:#38bdf8; display:block;">30-DAY GUARANTEE</span>
-          <span style="font-size:0.8rem; color:var(--text-muted);">More Leads Or It's Free</span>
-        </div>
+      <!-- Subtitle Voiceover Bar -->
+      <div class="voiceover-tracker" id="voiceover-text">
+        Over <strong>70% of local customers</strong> search on smartphones...
       </div>
-    </div>
-
-    <!-- SCENE 5: CALL TO ACTION (52s - 60s) -->
-    <div class="scene" id="scene-5">
-      <div class="badge badge-cyan">⚡ START YOUR BUILD</div>
-      <h2 class="scene-title">UPGRADE TO <strong>LOCALPULSE AI</strong></h2>
-      <p class="scene-desc">Stop losing customers to outdated websites. Lock in your 48-hour build today.</p>
-      
-      <button class="final-cta-btn" onclick="window.location.href='../index.html#calculator'">GET YOUR WEBSITE IN 48 HOURS</button>
-      <div class="final-url">LOCALPULSE-AI-NU.VERCEL.APP</div>
-    </div>
-
-    <!-- Live Subtitle / Voiceover Bar -->
-    <div class="subtitle-bar" id="subtitles">
-      Over <span>70% of local customers</span> search on smartphones...
     </div>
   </div>
 
   <!-- Player Controls -->
-  <div class="player-controls">
-    <div class="timeline-bar-wrap" id="timeline-wrap">
-      <div class="timeline-progress" id="timeline-bar"></div>
+  <div class="cinema-controls">
+    <div class="cinema-scrubber" id="scrubber-track">
+      <div class="scrubber-fill" id="scrubber-bar"></div>
     </div>
 
-    <div class="controls-row">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <button class="btn-play" id="play-btn">▶ PLAY</button>
-        <span class="time-display" id="time-text">00:00 / 01:00</span>
+    <div class="controls-inner">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="btn-play-cinema" id="cinema-play-btn">▶ PLAY FILM</button>
+        <span class="timer-readout" id="timer-display">00:00 / 01:00</span>
       </div>
 
-      <div class="scene-pills">
-        <button class="scene-pill-btn active" onclick="jumpToScene(1)">1. Problem</button>
-        <button class="scene-pill-btn" onclick="jumpToScene(2)">2. Solution</button>
-        <button class="scene-pill-btn" onclick="jumpToScene(3)">3. Sales Engine</button>
-        <button class="scene-pill-btn" onclick="jumpToScene(4)">4. Guarantee</button>
-        <button class="scene-pill-btn" onclick="jumpToScene(5)">5. Launch</button>
+      <div class="act-jump-btns">
+        <button class="act-btn active" onclick="seekAct(0)">Act 1: Problem</button>
+        <button class="act-btn" onclick="seekAct(8)">Act 2: 3D Reveal</button>
+        <button class="act-btn" onclick="seekAct(20)">Act 3: Sales Engine</button>
+        <button class="act-btn" onclick="seekAct(42)">Act 4: Economics</button>
+        <button class="act-btn" onclick="seekAct(52)">Act 5: Launch</button>
       </div>
     </div>
   </div>
 
+  <!-- 3D WebGL Motion Script & Audio Engine -->
   <script>
-    // Timeline Timings (in seconds)
-    const DURATION = 60;
-    const timelineData = [
-      { start: 0, end: 8, scene: 1, text: "Over <span>70% of local customers</span> search on smartphones. But when your site is slow or phone goes to voicemail, jobs go to competitors." },
-      { start: 8, end: 20, scene: 2, text: "Meet <span>LocalPulse AI</span>. Ultra-modern websites with built-in local SEO for local pros—live in under 48 hours for <span>$299 a month</span>." },
-      { start: 20, end: 42, scene: 3, text: "Layer in your <span>modular AI Sales Engine</span>: 24/7 AI Voice Phone Receptionist, Outbound Lead Machine, and Autonomous SEO Content." },
-      { start: 42, end: 52, scene: 4, text: "The math is simple: just <span>1 extra customer a month</span> pays for everything. Backed by our 30-day <span>'More Leads Or It's Free'</span> guarantee." },
-      { start: 52, end: 60, scene: 5, text: "Stop losing customers to outdated websites. Visit <span>LocalPulse.ai</span> and claim your 48-hour build today." }
-    ];
-
-    let currentTime = 0;
-    let isPlaying = false;
-    let animInterval = null;
+    // Audio Synthesizer for Cinematic Sound FX
     let audioCtx = null;
-
-    // Web Audio Synthesizer for High-Tech Sound FX
-    function initAudio() {
+    function getAudio() {
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
+      return audioCtx;
     }
 
-    function playTone(freq, type = 'sine', duration = 0.2, gainVal = 0.05) {
-      if (!audioCtx) return;
+    function playCinematicBassDrop() {
+      const ctx = getAudio();
+      if (!ctx) return;
       try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(140, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(32, ctx.currentTime + 1.2);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(ctx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + duration);
+        osc.stop(ctx.currentTime + 1.2);
       } catch (e) {}
     }
 
-    // Canvas Matrix Grid Glow
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() {
-      canvas.width = canvas.parentElement.clientWidth;
-      canvas.height = canvas.parentElement.clientHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    let gridOffset = 0;
-    function drawCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = 'rgba(99, 102, 241, 0.08)';
-      ctx.lineWidth = 1;
-      gridOffset = (gridOffset + 0.4) % 40;
-
-      for (let x = 0; x < canvas.width; x += 40) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
-      }
-      for (let y = gridOffset; y < canvas.height; y += 40) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-      requestAnimationFrame(drawCanvas);
-    }
-    drawCanvas();
-
-    // Scene & UI Updater
-    function updateFrame(time) {
-      const currentSegment = timelineData.find(s => time >= s.start && time < s.end) || timelineData[timelineData.length - 1];
-      
-      // Update Scenes
-      for (let i = 1; i <= 5; i++) {
-        const sceneEl = document.getElementById(`scene-${i}`);
-        if (i === currentSegment.scene) {
-          if (!sceneEl.classList.contains('active')) {
-            sceneEl.classList.add('active');
-            playTone(440 + i * 80, 'sine', 0.3, 0.04);
-          }
-        } else {
-          sceneEl.classList.remove('active');
-        }
-      }
-
-      // Update Subtitles
-      document.getElementById('subtitles').innerHTML = currentSegment.text;
-
-      // Update Timeline Bar
-      const progressPercent = (time / DURATION) * 100;
-      document.getElementById('timeline-bar').style.width = `${progressPercent}%`;
-
-      // Update Time Text
-      const mins = Math.floor(time / 60).toString().padStart(2, '0');
-      const secs = Math.floor(time % 60).toString().padStart(2, '0');
-      document.getElementById('time-text').textContent = `${mins}:${secs} / 01:00`;
-
-      // Update Scene Pills
-      document.querySelectorAll('.scene-pill-btn').forEach((btn, idx) => {
-        if (idx + 1 === currentSegment.scene) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
+    function playLaserSweep() {
+      const ctx = getAudio();
+      if (!ctx) return;
+      try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(220, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      } catch (e) {}
     }
 
-    // Playback Loop
-    function togglePlay() {
-      initAudio();
-      isPlaying = !isPlaying;
-      const btn = document.getElementById('play-btn');
-      
-      if (isPlaying) {
-        btn.textContent = '❚❚ PAUSE';
-        if (currentTime >= DURATION) currentTime = 0;
-        animInterval = setInterval(() => {
-          currentTime += 0.1;
-          if (currentTime >= DURATION) {
-            currentTime = DURATION;
-            togglePlay();
-          }
-          updateFrame(currentTime);
-        }, 100);
-      } else {
-        btn.textContent = '▶ PLAY';
-        clearInterval(animInterval);
-      }
+    // ----------------------------------------------------
+    // THREE.JS 3D CINEMATIC STAGE SETUP
+    // ----------------------------------------------------
+    const container = document.getElementById('cinema-container');
+    const canvas = document.getElementById('webgl-canvas');
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x02040a, 0.035);
+
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 0, 18);
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Dynamic Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const lightCyan = new THREE.PointLight(0x06b6d4, 3, 50);
+    lightCyan.position.set(-10, 8, 10);
+    scene.add(lightCyan);
+
+    const lightIndigo = new THREE.PointLight(0x6366f1, 3.5, 50);
+    lightIndigo.position.set(10, -8, 8);
+    scene.add(lightIndigo);
+
+    const lightEmerald = new THREE.PointLight(0x10b981, 2.5, 50);
+    lightEmerald.position.set(0, 10, -5);
+    scene.add(lightEmerald);
+
+    // 3D Particle Galaxy Vortex
+    const particleCount = 1200;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 45;
+      positions[i + 1] = (Math.random() - 0.5) * 35;
+      positions[i + 2] = (Math.random() - 0.5) * 40;
+
+      colors[i] = 0.2 + Math.random() * 0.4;
+      colors[i + 1] = 0.6 + Math.random() * 0.4;
+      colors[i + 2] = 0.9 + Math.random() * 0.1;
     }
 
-    document.getElementById('play-btn').addEventListener('click', togglePlay);
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Click on Timeline Scrubber
-    document.getElementById('timeline-wrap').addEventListener('click', (e) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const ratio = clickX / rect.width;
-      currentTime = ratio * DURATION;
-      updateFrame(currentTime);
+    const pMaterial = new THREE.PointsMaterial({
+      size: 0.18,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      blending: THREE.AdditiveBlending
     });
 
-    function jumpToScene(sceneNum) {
-      initAudio();
-      const seg = timelineData.find(s => s.scene === sceneNum);
-      if (seg) {
-        currentTime = seg.start;
-        updateFrame(currentTime);
+    const particleSystem = new THREE.Points(geometry, pMaterial);
+    scene.add(particleSystem);
+
+    // 3D Holographic Device / Website Glass Portal
+    const deviceGroup = new THREE.Group();
+
+    // Phone Frame (3D Glass Prism)
+    const phoneGeo = new THREE.BoxGeometry(4.8, 8.8, 0.4);
+    const phoneMat = new THREE.MeshPhysicalMaterial({
+      color: 0x0f172a,
+      metalness: 0.8,
+      roughness: 0.2,
+      transmission: 0.6,
+      transparent: true,
+      opacity: 0.85,
+      reflectivity: 0.9,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.1
+    });
+    const phoneMesh = new THREE.Mesh(phoneGeo, phoneMat);
+    deviceGroup.add(phoneMesh);
+
+    // Glowing Neon Edge Bezel
+    const edgeGeo = new THREE.EdgesGeometry(phoneGeo);
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, linewidth: 2 });
+    const edgeLines = new THREE.LineSegments(edgeGeo, edgeMat);
+    deviceGroup.add(edgeLines);
+
+    // Holographic Orbiting Laser Rings
+    const ringGeo = new THREE.TorusGeometry(6.2, 0.04, 16, 100);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.6 });
+    const ring1 = new THREE.Mesh(ringGeo, ringMat);
+    ring1.rotation.x = Math.PI / 3;
+    deviceGroup.add(ring1);
+
+    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(7.2, 0.03, 16, 100), new THREE.MeshBasicMaterial({ color: 0x06b6d4, transparent: true, opacity: 0.4 }));
+    ring2.rotation.y = Math.PI / 4;
+    deviceGroup.add(ring2);
+
+    scene.add(deviceGroup);
+
+    // ----------------------------------------------------
+    // TIMELINE & CHOREOGRAPHY
+    // ----------------------------------------------------
+    const TOTAL_DURATION = 60;
+    let playhead = 0;
+    let isPlaying = false;
+    let lastTime = performance.now();
+
+    const acts = [
+      {
+        start: 0,
+        end: 8,
+        badge: "⚠️ ACT I: THE LOCAL BUSINESS CRISIS",
+        title: "OVER 70% OF CUSTOMERS <span class='gradient-word'>SEARCH ON MOBILE</span>",
+        sub: "When your website is slow or calls hit voicemail, high-paying jobs go straight to competitors.",
+        voice: "Over <strong>70% of local customers</strong> search on smartphones. But when your site is dated or you miss calls, jobs go to competitors.",
+        cameraZ: 14,
+        deviceRotY: -0.4,
+        chips: []
+      },
+      {
+        start: 8,
+        end: 20,
+        badge: "⚡ ACT II: THE 3D DIGITAL REVEAL",
+        title: "ULTRA-MODERN WEBSITES <span class='gradient-word'>BUILT-IN LOCAL SEO</span>",
+        sub: "Engineered for tire shops, auto mechanics, salons, bakeries, and local pros. Live in 48h for $299/mo.",
+        voice: "Meet <strong>LocalPulse AI</strong>: Ultra-modern websites with built-in local SEO for local pros—live in under 48 hours for <strong>$299 a month</strong>.",
+        cameraZ: 11,
+        deviceRotY: 0.35,
+        chips: []
+      },
+      {
+        start: 20,
+        end: 42,
+        badge: "🚀 ACT III: THE MODULAR AI SALES ENGINE",
+        title: "LAYER IN YOUR <span class='gradient-word'>AI SALES ENGINE</span>",
+        sub: "Turn your modern site into an active revenue machine. Pick only the AI modules your business needs.",
+        voice: "Layer in your <strong>modular AI Sales Engine</strong>: 24/7 AI Voice Phone Receptionist, Outbound Lead Machine, and Autonomous SEO.",
+        cameraZ: 13.5,
+        deviceRotY: 0.05,
+        chips: ['chip-phone', 'chip-leads', 'chip-seo', 'chip-avatar']
+      },
+      {
+        start: 42,
+        end: 52,
+        badge: "📈 ACT IV: UNIT ECONOMICS & GUARANTEE",
+        title: "JUST 1 EXTRA CUSTOMER <span class='gradient-word'>PAYS FOR EVERYTHING</span>",
+        sub: "At an average ticket of $250, one single booked job covers your entire monthly site.",
+        voice: "The math is simple: just <strong>1 extra customer a month</strong> pays for everything. Backed by our 30-day <strong>'More Leads Or It's Free'</strong> guarantee.",
+        cameraZ: 12,
+        deviceRotY: -0.25,
+        chips: []
+      },
+      {
+        start: 52,
+        end: 60,
+        badge: "⚡ ACT V: CLAIM YOUR 48-HOUR LAUNCH",
+        title: "UPGRADE TO <span class='gradient-word'>LOCALPULSE AI</span>",
+        sub: "Stop losing customers to outdated websites. Lock in your 48-hour build today at LOCALPULSE-AI-NU.VERCEL.APP.",
+        voice: "Stop losing customers to outdated websites. Visit <strong>LocalPulse.ai</strong> and claim your 48-hour build today.",
+        cameraZ: 10.5,
+        deviceRotY: 0.1,
+        chips: ['chip-phone', 'chip-leads']
+      }
+    ];
+
+    let currentActIndex = -1;
+
+    function applyAct(actIndex) {
+      if (currentActIndex === actIndex) return;
+      currentActIndex = actIndex;
+      const act = acts[actIndex];
+
+      // Update UI elements with GSAP transitions
+      const badgeEl = document.getElementById('act-badge');
+      const titleEl = document.getElementById('act-title');
+      const subEl = document.getElementById('act-sub');
+      const voiceEl = document.getElementById('voiceover-text');
+
+      badgeEl.innerHTML = act.badge;
+      titleEl.innerHTML = act.title;
+      subEl.innerHTML = act.sub;
+      voiceEl.innerHTML = act.voice;
+
+      // Pulse Camera & Device
+      gsap.to(camera.position, { z: act.cameraZ, duration: 1.2, ease: "power2.out" });
+      gsap.to(deviceGroup.rotation, { y: act.deviceRotY, duration: 1.5, ease: "elastic.out(1, 0.75)" });
+
+      // HUD Chips visibility
+      document.querySelectorAll('.hud-chip').forEach(chip => {
+        if (act.chips.includes(chip.id)) {
+          chip.classList.add('show');
+        } else {
+          chip.classList.remove('show');
+        }
+      });
+
+      // Update act buttons
+      document.querySelectorAll('.act-btn').forEach((btn, idx) => {
+        if (idx === actIndex) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+
+      // Sound Effects
+      if (actIndex === 0) playCinematicBassDrop();
+      else playLaserSweep();
+    }
+
+    // Animation Render Loop
+    function animate(timestamp) {
+      requestAnimationFrame(animate);
+
+      const delta = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      // Playhead progress
+      if (isPlaying) {
+        playhead += delta;
+        if (playhead >= TOTAL_DURATION) {
+          playhead = TOTAL_DURATION;
+          toggleCinemaPlay();
+        }
+      }
+
+      // Find current Act
+      const currentActIdx = acts.findIndex(a => playhead >= a.start && playhead < a.end);
+      if (currentActIdx !== -1) {
+        applyAct(currentActIdx);
+      }
+
+      // Update Scrubber & Timer
+      const pct = (playhead / TOTAL_DURATION) * 100;
+      document.getElementById('scrubber-bar').style.width = `${pct}%`;
+      const m = Math.floor(playhead / 60).toString().padStart(2, '0');
+      const s = Math.floor(playhead % 60).toString().padStart(2, '0');
+      document.getElementById('timer-display').textContent = `${m}:${s} / 01:00`;
+
+      // 3D Continuous Floating Physics
+      particleSystem.rotation.y += 0.0015;
+      particleSystem.rotation.x += 0.0008;
+
+      ring1.rotation.z += 0.015;
+      ring2.rotation.x += 0.012;
+
+      deviceGroup.position.y = Math.sin(timestamp * 0.0015) * 0.35;
+      deviceGroup.rotation.x = Math.sin(timestamp * 0.001) * 0.1;
+
+      // Light Motion
+      lightCyan.position.x = Math.sin(timestamp * 0.002) * 12;
+      lightIndigo.position.y = Math.cos(timestamp * 0.002) * 10;
+
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(animate);
+
+    // Play/Pause Controller
+    function toggleCinemaPlay() {
+      getAudio();
+      isPlaying = !isPlaying;
+      const btn = document.getElementById('cinema-play-btn');
+      if (isPlaying) {
+        btn.textContent = '❚❚ PAUSE FILM';
+        if (playhead >= TOTAL_DURATION) playhead = 0;
+      } else {
+        btn.textContent = '▶ PLAY FILM';
       }
     }
 
-    // Initial Frame
-    updateFrame(0);
+    document.getElementById('cinema-play-btn').addEventListener('click', toggleCinemaPlay);
+
+    // Seek Controller
+    function seekAct(seconds) {
+      getAudio();
+      playhead = seconds;
+      const currentActIdx = acts.findIndex(a => playhead >= a.start && playhead < a.end);
+      if (currentActIdx !== -1) applyAct(currentActIdx);
+    }
+
+    document.getElementById('scrubber-track').addEventListener('click', (e) => {
+      getAudio();
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      playhead = ratio * TOTAL_DURATION;
+    });
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
   </script>
 </body>
 </html>
